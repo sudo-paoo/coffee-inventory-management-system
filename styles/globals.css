@@ -1,0 +1,51 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* 
+  @import "../styles/globals.css";
+*/
+
+/* Root */
+:root {
+  /* Font sizes */
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem;  /* 36px */
+  --text-5xl: 3rem;     /* 48px */
+  --text-6xl: 3.75rem;  /* 60px */
+  --text-7xl: 4.5rem;   /* 72px */
+  --text-8xl: 6rem;     /* 96px */
+  --text-9xl: 8rem;     /* 128px */
+
+  /* Colors - background, text colors, card colors */
+  --background-off-white: #F8F8FF; /* off-white */
+  --background: oklch(0.97 0.015 75); /* cream */
+  --foreground: oklch(0.25 0.01 60); /* Dark brown-gray */
+  --primary: oklch(0.45 0.08 230); /* Muted blue */
+  --primary-foreground: oklch(0.99 0.01 75); /* Cream white */
+  --secondary: oklch(0.88 0.025 65); /* Light beige */
+  --secondary-foreground: oklch(0.3 0.015 60); /* Dark brown */
+  --destructive: oklch(0.55 0.2 25); /* Warm red-brown */
+  --destructive-foreground: oklch(0.99 0.01 75);
+  --border: oklch(0.82 0.02 70); /* Light beige-gray */
+
+  /* Sidebar */
+  --sidebar: oklch(0.92 0.02 68); /* Light beige */
+  --sidebar-foreground: oklch(0.28 0.015 60); /* Dark brown-gray */
+  --sidebar-primary: oklch(0.48 0.09 235); /* Blue */
+  --sidebar-primary-foreground: oklch(0.98 0.01 75); /* Cream */
+  --sidebar-border: oklch(0.78 0.025 68); /* Medium beige-gray */
+}
+
+/* Globals */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Source Serif 4', serif;
+}
