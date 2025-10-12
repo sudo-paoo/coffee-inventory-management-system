@@ -1,13 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/pages/dashboard.css">
-    <link rel="stylesheet" href="styles/globals.css">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/pages/dashboard.css" />
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Dashboard</title>
   </head>
+
   <body>
-    <!-- Dashboard page -->
+    <div class="container">
+      <div class="sidebar">
+        <div>
+          <!-- Header -->
+          <div class="sidebar-header">
+            <div class="sidebar-logo">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="sidebar-title">Brew-kenhearted</div>
+          </div>
+          <!-- Menu -->
+          <div class="sidebar-menu">
+            <a
+              class="menu-item active"
+              href="palitan niyo ng route /admin/inventory ganun"
+            >
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Dashboard</span>
+            </a>
+            <a
+              class="menu-item"
+              href="palitan niyo ng route /admin/inventory ganun"
+            >
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Inventory</span>
+            </a>
+            <a
+              class="menu-item"
+              href="palitan niyo ng route /admin/inventory ganun"
+            >
+              <i class="fa-solid fa-receipt"></i>
+              <span>Transactions</span>
+            </a>
+            <a
+              class="menu-item"
+              href="palitan niyo ng route /admin/inventory ganun"
+            >
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div class="sidebar-footer">
+          <div class="user-card">
+            <div class="user-avatar">J</div>
+            <div class="user-info">
+              <div class="name">John Doe</div>
+              <div class="email">john.doe@inventory.com</div>
+            </div>
+            <div class="user-options">
+              <a href="../login.html"
+                ><i class="fa-solid fa-right-from-bracket"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard">
+        <h1>Dashboard</h1>
+        <div class="dashboard-content">
+          <!-- Summary Section -->
+          <div class="summary">
+            <h2>Summary</h2>
+            <div class="summary-grid">
+              <div class="card">
+                <h3>Total Items</h3>
+                <p class="value">5</p>
+              </div>
+              <div class="card">
+                <h3>Low Stock Alerts</h3>
+                <p class="value">1</p>
+              </div>
+              <div class="card">
+                <h3>Inventory Value</h3>
+                <p class="value">₱16,320.00</p>
+              </div>
+              <div class="card">
+                <h3>Out Of Stock</h3>
+                <p class="value red">0</p>
+              </div>
+              <div class="card">
+                <h3>Active User</h3>
+                <p class="value">2</p>
+              </div>
+            </div>
+            <div class="quick-actions">
+              <button class="btn">Add New Item</button>
+              <button class="btn">Generate Order</button>
+            </div>
+          </div>
+          <!-- Inventory Section -->
+          <div class="inventory">
+            <h2>Inventory by Category</h2>
+            <div class="category-list">
+              <div class="card">
+                <h3>Coffee Beans</h3>
+                <p>2 items</p>
+                <p>Value: ₱7,600.00</p>
+              </div>
+              <div class="card">
+                <h3>Dairy</h3>
+                <p>5 items</p>
+                <p>Value: ₱4,800.00</p>
+              </div>
+              <div class="card">
+                <h3>Syrup</h3>
+                <p>3 items</p>
+                <p>Value: ₱7,800.00</p>
+              </div>
+            </div>
+          </div>
+          <!-- Recent Activity Section -->
+          <div class="activity">
+            <h2>Recent Activity</h2>
+            <div class="activity-list">
+              <div class="activity-item">
+                <h3>Arabica Coffee Beans</h3>
+                <p>Stock Updated • 50 kg • 2025-01-15</p>
+              </div>
+              <div class="activity-item">
+                <h3>Whole Milk</h3>
+                <p>Stock Updated • 50 Liters • 2025-01-15</p>
+              </div>
+              <div class="activity-item">
+                <h3>Vanilla Syrup</h3>
+                <p>Stock Ordered • 12 Bottles • 2025-01-15</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

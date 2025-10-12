@@ -1,1 +1,113 @@
 @import "../styles/globals.css";
+
+body {
+  background-color: #f3f4f6;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+}
+
+.dashboard {
+  color: #333;
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.summary {
+  grid-column: 1 / 2;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.card .value {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card .red {
+  color: #d9534f;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.btn {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background-color: #2563eb;
+}
+
+.inventory,
+.activity {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.category-list .card {
+  margin-bottom: 10px;
+}
+
+.activity-list .activity-item {
+  background: #fafafa;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.activity-item h3 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}
