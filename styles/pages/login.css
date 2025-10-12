@@ -1,1 +1,13 @@
 @import "../styles/globals.css";
+
+h1{
+    font-size: var(--text-3xl);
+}
+
+body{
+    background: var(--background);
+}
+
+ .footer footer{
+    font-size: var(--text-base);
+ }
