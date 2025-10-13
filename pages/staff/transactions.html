@@ -2,12 +2,131 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/pages/transactions.css">
-    <link rel="stylesheet" href="styles/globals.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Case Study/coffee-inventory-management-system/styles/pages/transactions.css">
+    <link rel="stylesheet" href="/Case Study/coffee-inventory-management-system/styles/globals.css">
+    <title>Transactions</title>
   </head>
   <body>
-    <!-- Transactions (staff) page -->
-  </body>
+  <div class="sidebar">
+    <div>
+      <!-- Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <div class="sidebar-title">Brew-kenhearted</div>
+      </div>
+
+      <!-- Menu -->
+      <div class="sidebar-menu">
+        <a class="menu-item active" href="pages/Dashboard.html">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a class="menu-item" href="pages/admin/inventory.html">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Inventory</span>
+        </a>
+        <a class="menu-item" href="pages/admin/transactions.html">
+          <i class="fa-solid fa-receipt"></i>
+          <span>Transactions</span>
+        </a>
+        <a class="menu-item" href="pages/settings.html">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">J</div>
+        <div class="user-info">
+          <div class="name">John Doe</div>
+          <div class="email">john.doe@inventory.com</div>
+        </div>
+        <div class="user-options">
+          <a href="../login.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Transactions</h1>
+    <button type="button" class="btn-new-transaction">New Transaction</button>
+  </div>
+  <!-- Class for Input/Select -->
+  <div class="filters">
+    <input type="text" placeholder="Search transaction">
+    <select id = "types">
+      <option value="alltypes">All Types</option>
+      <option value="stockin">Stock In</option>
+      <option value="stockiout">Stock Out</option>
+      <option value="damaged">Damaged</option>
+      <option value="expired">Expired</option>
+    </select>
+    <select id = time>
+      <option value="alltime">All Time</option>
+      <option value="today">Today</option>
+      <option value="week">Week</option>
+      <option value="month">Month</option>
+    </select>
+  </div>
+  <!-- Page Body -->
+  <div class="page-body">
+  <div class="transaction-history">
+    <h2>Transaction History</h2>
+  <!-- Transaction Cards -->
+    <div class="transaction-card">
+      <div class="transaction-info">
+        <strong>Arabica Coffee Beans</strong><br>
+        <span>by Admin User</span><br>
+        <span>Quantity: 50 units</span>
+      </div>
+      <div class="transaction-meta">
+        <span class="status stock-in">Stock In</span><br>
+        <span>Time: about 2 hours ago</span><br>
+        <span>Date: 10/4/2025 11:46:52 AM</span><br>
+        <span class="note">Note: New shipment from supplier</span>
+      </div>
+    </div>
+
+    <div class="transaction-card">
+      <div class="transaction-info">
+        <strong>Vanilla Syrup</strong><br>
+        <span>by Staff User</span><br>
+        <span>Quantity: 10 units</span>
+      </div>
+      <div class="transaction-meta">
+        <span class="status stock-out">Stock Out</span><br>
+        <span>Time: about 5 hours ago</span><br>
+        <span>Date: 10/4/2025 8:45:24 AM</span><br>
+        <span class="note">Note: Used for daily operations</span>
+      </div>
+    </div>
+
+    <div class="transaction-card">
+      <div class="transaction-info">
+        <strong>Hazelnut Syrup</strong><br>
+        <span>by Staff User</span><br>
+        <span>Quantity: 3 units</span>
+      </div>
+      <div class="transaction-meta">
+        <span class="status damaged">Damaged</span><br>
+        <span>Time: 1 day ago</span><br>
+        <span>Date: 10/3/2025 2:59:54 PM</span><br>
+        <span class="note">Note: Bottles broken during storage</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+</body>
 </html>
