@@ -1,13 +1,136 @@
-@import "../styles/globals.css";
-
-h1{
-    font-size: var(--text-3xl);
-}
+@import "styles/globals.css";
 
 body{
     background: var(--background);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;  
+}
+
+.logo{
+    display: grid;
+    place-items: center;
+    padding-top: 2.5rem;
+    /* Size ng logo?*/
+}
+
+.header{
+    display: grid;
+    place-items: center;
+
+}
+
+.header p {
+    font-size: var(--text-3xl);
+    font-weight: 500;
+    
+}
+
+.container{
+    display: grid;
+    place-self: center;
+    gap: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 620px;
+    height: 385px; /*fixed size based on the figma*/
+    background-color: var(--background);
+}
+
+.forms input{
+    width: 100%;
+    padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border); 
+    background-color: #FFFFFF; /*Figma fill*/
+}
+
+.forms button{
+    width: 100%;
+    padding: 0.25rem;
+    background-color: var(--primary);
+    color: #FFFFFF;
+    font-size: var(--text-xl);
+    border-radius: 8px;
+    border: 1px solid;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.form-head{
+    font-size: var(--text-3xl);
+    font-weight: 500;
+}
+
+.form-subhead{
+    font-size: var(--text-base);
+}
+
+.container label{
+    font-size: var(--text-xs);
+}
+
+input::placeholder{
+    font-size: var(--text-xs);
+}
+
+.form-footer {
+    display: flex; /* ayaw mag gitna pag grid eh*/
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    margin-top: 0.5rem;
+    font-size: var(--text-xs);
+}
+
+.form-footer p,
+.form-footer a {
+  margin: 0;
+  text-align: center;
+}
+
+.form-footer a {
+  text-decoration: none;
+  color: #164E63; /*Figma color*/
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer{
+    padding-top: 8rem; /*Hinula ko lang para dumulo lang sya, pafix nalang*/
+    display: grid;
+    align-self: end;
+    justify-self: center;
+    padding-bottom: 0rem;
 }
 
  .footer footer{
     font-size: var(--text-base);
+ }
+
+/* For mobile */
+
+ @media (max-width: 768px) {
+    .logo img{
+        /*Size ng logo*/
+    }
+
+    .header p{
+        font-size: var(--text-xl);
+    }
+
+    .container{
+        width: 377px;
+        height: 350px;
+    }
+
+    .form-head{
+        font-size: var(--text-xl);
+    }
+    .form-subhead{
+        font-size: var(--text-xs);
+    }
  }

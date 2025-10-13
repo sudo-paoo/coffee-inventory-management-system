@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/pages/login.css">
-    <link rel="stylesheet" href="../styles/globals.css">
+    <link rel="stylesheet" href="styles/pages/login.css">
+    <link rel="stylesheet" href="styles/globals.css">
     <title>Login Page</title>
   </head>
   <body>
@@ -16,14 +16,30 @@
 
      <!-- Title header -->
     <div class="header">
-      <h1>Coffee Inventory Management System</h1>
+      <p>Coffee Inventory Management System</p>
     </div>
 
      <!-- Sign in Form -->
-    <div class="forms">
-      <form>
-        
-      </form>
+    <div class="container">
+      <div class="forms">
+        <p class="form-head">Sign in</p><br>
+        <p class="form-subhead">Enter your credentials to access your account</p><br>
+
+        <form action="/login" method="POST">
+          <label for="email">Email Address</label><br>
+          <input type="email" id="email" name="email" placeholder="admin@brew-kenhearted.com" required><br><br>
+
+          <label for="password">Password</label><br>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+
+          <button type="submit">Sign in</button>
+        </form>
+
+        <div class="form-footer">
+          <p class="forgot-password">Forgot your password?</p>
+          <a href="#" class="contact-admin">Contact your administrator</a>
+        </div>
+      </div>
     </div>
 
      <!-- Footer -->
