@@ -1,279 +1,361 @@
-  @import url("globals.css");
+@import url("globals.css");
 
-  /*DASHBOARD MAIN LAYOUT*/
-  body {
-    font-family: "Source Serif 4", serif;
-    background: var(--background);
-    color: var(--foreground);
-    margin: 0;
-    padding: 0;
-  }
+/*DASHBOARD MAIN LAYOUT*/
+body {
+  font-family: "Source Serif 4", serif;
+  background: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-  .container {
-    display: flex;
-    min-height: 100vh;
-  }
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  .dashboard {
-    flex: 1;
-    padding: 2rem;
-    background: var(--background);
-  }
+.dashboard {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  overflow: hidden;
+}
 
-  hr {
-    border: none;
-    background-color: var(--foreground);
-    height: 4px;
-    margin: 0 -2rem 35px -2rem;
-    border-radius: 2px;
-  }
+.sidebar-logo .logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  /* gamit daw ako clamp para sa sizing ng text sa responsive*/
-  .dashboard h1 {
-    font-size: clamp(2rem, 5vw, 64px);
-    font-weight: 700;
-    margin-bottom: 1.25rem;
-    color: var(--foreground);
-  }
+hr {
+  border: none;
+  background-color: var(--foreground);
+  height: 4px;
+  margin: 0 -2rem 35px -2rem;
+  border-radius: 2px;
+}
 
-  .dashboard h2 {
-    font-size: clamp(1.25rem, 3vw, var(--text-5xl));
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--foreground);
-  }
+/* gamit daw ako clamp para sa sizing ng text sa responsive*/
+.dashboard h1 {
+  font-size: clamp(2rem, 5vw, 64px);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--foreground);
+}
 
-  /*DASHBOARD GRID*/
-  .dashboard-content {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr 1fr auto;
-    gap: 1.5rem;
-    min-height: 70vh;
-    align-items: start; 
-  }
+.dashboard h2 {
+  font-size: clamp(1.25rem, 3vw, var(--text-3xl));
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
 
+/*DASHBOARD GRID*/
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+}
+.middle-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.inventory,
+.activity,
+.quick {
+  background: var(--background);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/*SUMMARY SECTION*/
+.summary .card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: left;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summary .card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.summary .card .card-icon {
+  font-size: 1.25rem;
+  opacity: 0.7;
+}
+
+.summary .card h3 {
+  font-size: clamp(0.875rem, 1.5vw, var(--text-xl));
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.summary .card h4 {
+  font-size: clamp(0.7rem, 1.2vw, var(--text-base));
+  font-weight: 400;
+  color: var(--foreground);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.summary .card .valueLow {
+  font-size: clamp(2rem, 4vw, var(--text-4xl));
+  font-weight: 700;
+  color: #ff9800;
+  margin: 0.5rem 0;
+}
+
+.summary .card .value {
+  font-size: clamp(2rem, 4vw, var(--text-4xl));
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0.5rem 0;
+}
+
+.summary .card .value.red {
+  color: var(--destructive);
+}
+
+/*QUICK ACTIONS*/
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quick-actions .btn {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  height: 69px;
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: clamp(1rem, 2vw, 32px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Source Serif 4", serif;
+}
+
+.quick-actions .btn i {
+  font-size: 1.25rem;
+}
+
+.quick-actions .btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.quick-actions .btn-secondary {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.quick-actions .btn:hover {
+  background: var(--sidebar-hover);
+}
+
+/*INVENTORY BY CATEGORY*/
+.inventory .category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.inventory .card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.inventory .card .category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.inventory .card .category-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inventory .card h3 {
+  font-size: clamp(1rem, 2vw, var(--text-3xl));
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.inventory .card .item-count {
+  font-size: clamp(0.875rem, 1.5vw, var(--text-2xl));
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.inventory .card .low-badge {
+  background: #ff9800;
+  color: white;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.inventory .card .progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.inventory .card .progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.inventory .card .category-value {
+  font-size: clamp(0.8rem, 1.3vw, 15px);
+  color: var(--foreground);
+  opacity: 0.85;
+  margin: 0;
+}
+
+/*RECENT ACTIVITY*/
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.activity-item {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.activity-item .activity-icon {
+  font-size: 1.25rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.activity-item.warning .activity-icon {
+  color: #ff9800;
+  opacity: 1;
+}
+
+.activity-item .activity-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+}
+
+.activity-item .activity-left h3 {
+  font-size: clamp(0.875rem, 1.5vw, var(--text-xl));
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--foreground);
+}
+
+.activity-item .activity-left p {
+  font-size: clamp(0.75rem, 1.2vw, var(--text-base));
+  color: var(--foreground);
+  opacity: 0.8;
+  margin: 0;
+}
+
+.activity-item .activity-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.activity-item .activity-amount {
+  font-size: clamp(0.875rem, 1.5vw, var(--text-2xl));
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.activity-item .activity-date {
+  font-size: clamp(0.75rem, 1.2vw, var(--text-base));
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 1024px) {
   .summary {
-    grid-column: 1;
-    grid-row: 1 / 3;
+    grid-template-columns: repeat(1fr);
   }
 
-  .inventory {
-    grid-column: 2;
-    grid-row: 1;
+  .middle-section {
+    grid-template-columns: 1fr;
   }
 
-  .activity {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .quick {
-    grid-column: 1 / 3;
-    grid-row: 3;
-  }
-
-  .summary,
-  .quick,
-  .inventory,
-  .activity {
-    background: var(--background);
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /*SUMMARY SECTION*/
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: min-content;
-    height: auto !important; 
-    gap: 1rem;
-  }
-
-
-  .summary .card {
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    padding: 1rem;
-    height: fit-content;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .summary .card h3 {
-    font-size: clamp(0.875rem, 1.5vw, var(--text-3xl));
-    font-weight: 600;
-    text-align: left;
-    color: var(--foreground);
-  }
-
-  .summary .card h4 {
-    font-size: clamp(0.7rem, 1.2vw, var(--text-base));
-    font-weight: 400;
-    text-align: left;
-    color: var(--foreground);
-    opacity: 1;
-  }
-
-  .summary .card .value {
-    font-size: clamp(2rem, 4vw, 64px);
-    font-weight: 700;
-    color: var(--foreground);
-    margin: 0;
-  }
-
-  .summary .card .value.red {
-    color: var(--destructive);
-  }
-
-  /*QUICK ACTIONS*/
   .quick-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .quick-actions .btn {
-    background: var(--primary);
-    color: var(--primary-foreground);
-    height: 69px;
-    flex: 1;
-    border: 0;
-    border-radius: 6px;
-    padding: 0.75rem 1rem;
-
-    font-size: clamp(1rem, 2vw, 32px);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: "Source Serif 4", serif;
-  }
-
-  .quick-actions .btn:hover {
-    background: var(--sidebar-hover);
-  }
-
-  /*INVENTORY BY CATEGORY*/
-  .inventory .category-list {
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
-    flex: 1;
   }
+}
 
-  .inventory .card {
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+@media (max-width: 640px) {
+  .summary {
+    grid-template-columns: 1fr;
   }
-
-  .inventory .card .category-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-
-  .inventory .card h3 {
-    font-size: clamp(1rem, 2vw, var(--text-4xl));
-    font-weight: 600;
-    color: var(--foreground);
-    margin: 0;
-  }
-
-  .inventory .card .item-count {
-    font-size: clamp(0.875rem, 1.5vw, var(--text-2xl));
-    font-weight: 600;
-    color: var(--foreground);
-  }
-
-  .inventory .card .category-value {
-    font-size: clamp(0.8rem, 1.3vw, var(--text-base));
-    color: var(--foreground);
-    opacity: 1;
-    margin: 0;
-  }
-
-  /*RECENT ACTIVITY*/
-  .activity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    flex: 1;
-  }
-
-  .activity-item {
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .activity-item .activity-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .activity-item .activity-left h3 {
-    font-size: clamp(0.875rem, 1.5vw, var(--text-2xl));
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    color: var(--foreground);
-  }
-
-  .activity-item .activity-left p {
-    font-size: clamp(0.75rem, 1.2vw, var(--text-base));
-    color: var(--foreground);
-    opacity: 1;
-    margin: 0;
-  }
-
-  .activity-item .activity-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.25rem;
-  }
-
-  .activity-item .activity-amount {
-    font-size: clamp(0.875rem, 1.5vw, var(--text-2xl));
-    font-weight: 600;
-    color: var(--foreground);
-  }
-
-  .activity-item .activity-date {
-    font-size: clamp(0.75rem, 1.2vw, var(--text-base));
-    color: var(--foreground);
-    opacity: 0.8;
-  }
-
-  /*RESPONSIVE*/
-  @media (max-width: 1024px) {
-    .dashboard-content {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-    }
-
-    .summary,
-    .inventory,
-    .activity,
-    .quick {
-      grid-column: 1;
-      grid-row: auto;
-    }
-
-    .summary-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+}

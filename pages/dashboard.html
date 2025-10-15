@@ -25,7 +25,7 @@
           </div>
            <!-- Menu  -->
           <div class="sidebar-menu">
-            <a class="menu-item active" href="#">
+            <a class="menu-item active" href="palitan niyo ng route /admin/inventory ganun"></a>
               <i class="fa-solid fa-chart-line"></i>
               <span>Dashboard</span>
             </a>
@@ -61,116 +61,175 @@
         <h1>Dashboard</h1>
         <hr />
         <div class="dashboard-content">
-           <!-- Summary Section  -->
+          <!-- summary -->
           <div class="summary">
-            <h2>Summary</h2>
-            <div class="summary-grid">
-              <div class="card">
+            <div class="card">
+              <div class="card-header">
                 <h3>Total Items</h3>
-                <h4>Across All Categories</h4>
-                <p class="value">5</p>
+                <i class="fa-solid fa-box card-icon"></i>
               </div>
-              <div class="card">
+              <p class="value">5</p>
+              <h4>Across all categories</h4>
+            </div>
+            <div class="card">
+              <div class="card-header">
                 <h3>Low Stock Alerts</h3>
-                <h4>Items need Reordering</h4>
-                <p class="value">1</p>
+                <i class="fa-solid fa-triangle-exclamation card-icon"></i>
               </div>
-              <div class="card">
+              <p class="valueLow">1</p>
+              <h4>Items need reordering</h4>
+            </div>
+            <div class="card">
+              <div class="card-header">
                 <h3>Inventory Value</h3>
-                <h4>Total Stock Value</h4>
-                <p class="value">₱16,320.00</p>
+                <i class="fa-solid fa-dollar-sign card-icon"></i>
               </div>
-              <div class="card">
-                <h3>Out Of Stock</h3>
-                <h4>Items need Restocking</h4>
-                <p class="value red">0</p>
+              <p class="value">$1632.00</p>
+              <h4>Total stock value</h4>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Active Users</h3>
+                <i class="fa-solid fa-users card-icon"></i>
               </div>
-              <div class="card">
-                <h3>Active User</h3>
-                <h4>System Users</h4>
-                <p class="value">2</p>
-              </div>
+              <p class="value">3</p>
+              <h4>System users</h4>
             </div>
           </div>
-
-           <!-- Inventory Section  -->
-          <div class="inventory">
-            <h2>Inventory by Category</h2>
-            <div class="category-list">
-              <div class="card">
-                <div class="category-header">
-                  <h3>Coffee Beans</h3>
-                  <span class="item-count">2 items</span>
+<!-- middle section(inventory by category & recent activity) -->
+          <div class="middle-section">
+            <div class="inventory">
+              <h2>Inventory by Category</h2>
+              <div class="category-list">
+                <div class="card">
+                  <div class="category-header">
+                    <h3>Coffee Beans</h3>
+                    <div class="category-meta">
+                      <span class="item-count">2 items</span>
+                      <span class="low-badge">1 low</span>
+                    </div>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%"></div>
+                  </div>
+                  <p class="category-value">Value: $1425.00</p>
                 </div>
-                <p class="category-value">Value: ₱6,000.00</p>
-              </div>
-              <div class="card">
-                <div class="category-header">
-                  <h3>Dairy</h3>
-                  <span class="item-count">5 items</span>
+                <div class="card">
+                  <div class="category-header">
+                    <h3>Dairy</h3>
+                    <span class="item-count">1 items</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%"></div>
+                  </div>
+                  <p class="category-value">Value: $30.00</p>
                 </div>
-                <p class="category-value">Value: ₱6,000.00</p>
-              </div>
-              <div class="card">
-                <div class="category-header">
-                  <h3>Syrup</h3>
-                  <span class="item-count">3 items</span>
+                <div class="card">
+                  <div class="category-header">
+                    <h3>Supplies</h3>
+                    <span class="item-count">1 items</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                  </div>
+                  <p class="category-value">Value: $75.00</p>
                 </div>
-                <p class="category-value">Value: ₱6,000.00</p>
-              </div>
-            </div>
-          </div>
-
-           <!-- Recent Activity Section  -->
-          <div class="activity">
-            <h2>Recent Activity</h2>
-            <div class="activity-list">
-              <div class="activity-item">
-                <div class="activity-content">
-                  <div class="activity-left">
-                    <h3>Arabica Coffee Beans</h3>
-                    <p>Stock Updated</p>
+                <div class="card">
+                  <div class="category-header">
+                    <h3>Syrups</h3>
+                    <span class="item-count">1 items</span>
                   </div>
-                  <div class="activity-right">
-                    <span class="activity-amount">50 kg</span>
-                    <span class="activity-date">2025-01-15</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%"></div>
                   </div>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-content">
-                  <div class="activity-left">
-                    <h3>Whole Milk</h3>
-                    <p>Stock Updated</p>
-                  </div>
-                  <div class="activity-right">
-                    <span class="activity-amount">50 Liters</span>
-                    <span class="activity-date">2025-01-15</span>
-                  </div>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-content">
-                  <div class="activity-left">
-                    <h3>Vanilla Syrup</h3>
-                    <p>Stock Updated</p>
-                  </div>
-                  <div class="activity-right">
-                    <span class="activity-amount">12 Bottles</span>
-                    <span class="activity-date">2025-01-15</span>
-                  </div>
+                  <p class="category-value">Value: $102.00</p>
                 </div>
               </div>
             </div>
-          </div>
 
-           <!-- Quick Actions  -->
+            <div class="activity">
+              <h2>Recent Activity</h2>
+              <div class="activity-list">
+                <div class="activity-item">
+                  <i class="fa-solid fa-box card-icon"></i>
+                  <div class="activity-content">
+                    <div class="activity-left">
+                      <h3>Whole Milk</h3>
+                      <p>Stock Updated</p>
+                    </div>
+                    <div class="activity-right">
+                      <span class="activity-amount">25 liters</span>
+                      <span class="activity-date">2025-01-18</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <i class="fa-solid fa-box card-icon"></i>
+                  <div class="activity-content">
+                    <div class="activity-left">
+                      <h3>Arabica Coffee Beans</h3>
+                      <p>Stock Updated</p>
+                    </div>
+                    <div class="activity-right">
+                      <span class="activity-amount">50 kg</span>
+                      <span class="activity-date">20255-01-15</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <i class="fa-solid fa-box card-icon"></i>
+                  <div class="activity-content">
+                    <div class="activity-left">
+                      <h3>Vanilla Syrup</h3>
+                      <p>Stock Updated</p>
+                    </div>
+                    <div class="activity-right">
+                      <span class="activity-amount">12 bottles</span>
+                      <span class="activity-date">20255-01-14</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <i class="fa-solid fa-box card-icon"></i>
+                  <div class="activity-content">
+                    <div class="activity-left">
+                      <h3>Paper Cups (12oz)</h3>
+                      <p>Stock Updated</p>
+                    </div>
+                    <div class="activity-right">
+                      <span class="activity-amount">500 pieces</span>
+                      <span class="activity-date">20255-01-12</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="activity-item warning">
+                  <i class="fa-solid fa-triangle-exclamation activity-icon warning-icon"></i>
+                  <div class="activity-content">
+                    <div class="activity-left">
+                      <h3>Robusta Coffee Beans</h3>
+                      <p >Low Stock Alert</p>
+                    </div>
+                    <div class="activity-right">
+                      <span class="activity-amount">8 kg</span>
+                      <span class="activity-date">20255-01-10</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- quick actions            -->
           <div class="quick">
             <h2>Quick Actions</h2>
             <div class="quick-actions">
-              <button class="btn">Add New Item</button>
-              <button class="btn">Generate Order</button>
-            </div>
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-mug-hot"></i>
+                Add New Item
+              </button>
+              <button class="btn btn-secondary">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Generate Order
+              </button>
           </div>
         </div>
       </div>
