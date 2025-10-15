@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/pages/login.css">
-    <link rel="stylesheet" href="styles/globals.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/pages/login.css" />
+    <link rel="stylesheet" href="styles/globals.css" />
     <title>Login Page</title>
   </head>
   <body>
-
     <!-- Logo -->
     <div class="logo">
-      <img src="assets/logo.png" alt="logo">
+      <img src="assets/logo.png" alt="logo" />
     </div>
 
-     <!-- Title header -->
+    <!-- Title header -->
     <div class="header">
       <p>Coffee Inventory Management System</p>
     </div>
 
-     <!-- Sign in Form -->
+    <!-- Sign in Form -->
     <div class="container">
       <div class="forms">
-        <p class="form-head">Sign in</p><br>
-        <p class="form-subhead">Enter your credentials to access your account</p><br>
+        <div class="form-header">
+          <p class="form-head">Sign in</p>
+        </div>
+        
+        <p class="form-subhead">
+          Enter your credentials to access your account
+        </p>
 
-        <form action="/login" method="POST">
-          <label for="email">Email Address</label><br>
-          <input type="email" id="email" name="email" placeholder="admin@brew-kenhearted.com" required><br><br>
+        <form action="/login.html" method="POST">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="admin@brew-kenhearted.com"
+              required
+            />
+          </div>
 
-          <label for="password">Password</label><br>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
 
           <button type="submit">Sign in</button>
         </form>
@@ -42,10 +62,9 @@
       </div>
     </div>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <div class="footer">
-      <footer>© 2025 Brew-kenhearted. All rights reserved.</footer>
+      <footer>&copy; 2025 Brew-kenhearted. All rights reserved.</footer>
     </div>
-
   </body>
 </html>
