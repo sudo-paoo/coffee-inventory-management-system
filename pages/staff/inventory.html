@@ -1,13 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/pages/inventory.css">
-    <link rel="stylesheet" href="styles/globals.css">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/pages/inventory.css" />
+    <link rel="stylesheet" href="/styles/pages/inventory-modal.css" />
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Inventory</title>
   </head>
   <body>
-    <!-- Inventory (staff) page -->
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div>
+          <!-- Header -->
+          <div class="sidebar-header">
+            <div class="sidebar-logo">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="sidebar-title">Brew-kenhearted</div>
+          </div>
+
+          <!-- Menu -->
+          <div class="sidebar-menu">
+            <a class="menu-item" href="../dashboard.html">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Dashboard</span>
+            </a>
+            <a class="menu-item active" href="inventory.html">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Inventory</span>
+            </a>
+            <a class="menu-item" href="../admin/transactions.html">
+              <i class="fa-solid fa-receipt"></i>
+              <span>Transactions</span>
+            </a>
+            <a class="menu-item" href="../settings.html">
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="sidebar-footer">
+          <div class="user-card">
+            <div class="user-avatar">J</div>
+            <div class="user-info">
+              <div class="name">John Doe</div>
+              <div class="email">john.doe@inventory.com</div>
+            </div>
+            <div class="user-options">
+              <a href="../login.html"
+                ><i class="fa-solid fa-right-from-bracket"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1>Inventory</h1>
+          <button type="button" class="btn-new-item">
+            <i class="fa-solid fa-plus"></i>
+            <span>New Item</span>
+          </button>
+        </div>
+        <!-- Filters -->
+        <div class="filters">
+          <input type="text" placeholder="Search item" />
+          <select id="categories">
+            <option value="allcategories">All Categories</option>
+            <option value="coffeebeans">Coffee Beans</option>
+            <option value="dairies">Dairies</option>
+            <option value="syrups">Syrups</option>
+            <option value="pastries">Pastries</option>
+            <option value="equipments">Equipments</option>
+          </select>
+          <select id="name">
+            <option value="name">Name</option>
+            <option value="stockquantity">Stock Quantity</option>
+            <option value="category">Category</option>
+            <option value="reorderpriority">Reorder Priority</option>
+          </select>
+        </div>
+        <!-- Page body -->
+        <div class="page-body">
+          <div class="inventory-items">
+            <h2>Inventory Items</h2>
+            <!-- Inventory Cards Container (wrapper) -->
+            <div class="inventory-cards-container">
+              <!-- Grid wrapper -->
+              <div class="inventory-cards-grid">
+                <!-- Inventory Cards -->
+                <div class="inventory-card">
+                  <div class="card-image">
+                    <img
+                      src="https://via.placeholder.com/150x100?text=Coffee+Beans"
+                      alt="Arabica Coffee Beans"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="card-header">
+                      <h3>Arabica Coffee Beans</h3>
+                      <span class="badge badge-in-stock">In Stock</span>
+                    </div>
+                    <p class="card-category">Coffee Beans</p>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Stock</span>
+                        <span class="detail-value">50 kg</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Reorder</span>
+                        <span class="detail-value">10 kg</span>
+                      </div>
+                    </div>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Price</span>
+                        <span class="detail-value">₱ 1476.45</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Cost</span>
+                        <span class="detail-value">₱ 2026.50</span>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-meta">
+                        <div class="meta-item">
+                          <span class="meta-label">Expiration date</span>
+                          <span class="meta-value">2024-12-31</span>
+                        </div>
+                        <div class="meta-item">
+                          <span class="meta-label">Supplier</span>
+                          <span class="meta-value">Premium Coffee Co.</span>
+                        </div>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn-edit">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="inventory-card">
+                  <div class="card-image">
+                    <img
+                      src="https://via.placeholder.com/150x100?text=Whole+Milk"
+                      alt="Whole Milk"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="card-header">
+                      <h3>Whole Milk</h3>
+                      <span class="badge badge-low-stock">Low Stock</span>
+                    </div>
+                    <p class="card-category">Dairy</p>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Stock</span>
+                        <span class="detail-value">25 Liters</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Reorder</span>
+                        <span class="detail-value">30 Liters</span>
+                      </div>
+                    </div>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Price</span>
+                        <span class="detail-value">₱ 1476.45</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Cost</span>
+                        <span class="detail-value">₱ 2026.50</span>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-meta">
+                        <div class="meta-item">
+                          <span class="meta-label">Expiration date</span>
+                          <span class="meta-value">2024-12-31</span>
+                        </div>
+                        <div class="meta-item">
+                          <span class="meta-label">Supplier</span>
+                          <span class="meta-value">Fresh Dairy Farm</span>
+                        </div>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn-edit">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="inventory-card">
+                  <div class="card-image">
+                    <img src="https://via.placeholder.com/150x100?text=Whole+Milk" alt="Whole Milk">
+                  </div>
+                  <div class="card-content">
+                    <div class="card-header">
+                      <h3>Whole Milk</h3>
+                      <span class="badge badge-low-stock">Low Stock</span>
+                    </div>
+                    <p class="card-category">Dairy</p>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Stock</span>
+                        <span class="detail-value">25 Liters</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Reorder</span>
+                        <span class="detail-value">30 Liters</span>
+                      </div>
+                    </div>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Price</span>
+                        <span class="detail-value">₱ 1476.45</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Cost</span>
+                        <span class="detail-value">₱ 2026.50</span>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-meta">
+                        <div class="meta-item">
+                          <span class="meta-label">Expiration date</span>
+                          <span class="meta-value">2024-12-31</span>
+                        </div>
+                        <div class="meta-item">
+                          <span class="meta-label">Supplier</span>
+                          <span class="meta-value">Fresh Dairy Farm</span>
+                        </div>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn-edit">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="inventory-card">
+                  <div class="card-image">
+                    <img src="https://via.placeholder.com/150x100?text=Whole+Milk" alt="Whole Milk">
+                  </div>
+                  <div class="card-content">
+                    <div class="card-header">
+                      <h3>Whole Milk</h3>
+                      <span class="badge badge-low-stock">Low Stock</span>
+                    </div>
+                    <p class="card-category">Dairy</p>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Stock</span>
+                        <span class="detail-value">25 Liters</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Reorder</span>
+                        <span class="detail-value">30 Liters</span>
+                      </div>
+                    </div>
+                    <div class="card-details">
+                      <div class="detail-item">
+                        <span class="detail-label">Price</span>
+                        <span class="detail-value">₱ 1476.45</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="detail-label">Cost</span>
+                        <span class="detail-value">₱ 2026.50</span>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-meta">
+                        <div class="meta-item">
+                          <span class="meta-label">Expiration date</span>
+                          <span class="meta-value">2024-12-31</span>
+                        </div>
+                        <div class="meta-item">
+                          <span class="meta-label">Supplier</span>
+                          <span class="meta-value">Fresh Dairy Farm</span>
+                        </div>
+                      </div>
+                      <div class="card-actions">
+                        <button class="btn-edit">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Add Item -->
+    <div id="addItemModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Add Inventory Item</h2>
+            <p class="modal-subtitle">Add a new item to inventory</p>
+          </div>
+          <button class="modal-close" onclick="closeAddModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addItemName">Item Name</label>
+                <input type="text" id="addItemName" class="form-input" placeholder="Arabica Coffee Beans">
+              </div>
+              
+              <div class="form-group">
+                <label for="addCategory">Category</label>
+                <select id="addCategory" class="form-select">
+                  <option value="">Coffee Beans</option>
+                  <option value="dairies">Dairies</option>
+                  <option value="syrups">Syrups</option>
+                  <option value="pastries">Pastries</option>
+                  <option value="equipments">Equipments</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addStockQuantity">Stock Quantity</label>
+                <input type="number" id="addStockQuantity" class="form-input" placeholder="50" min="0">
+              </div>
+              
+              <div class="form-group">
+                <label for="addUnit">Unit</label>
+                <input type="text" id="addUnit" class="form-input" placeholder="kg">
+              </div>
+
+              <div class="form-group">
+                <label for="addReorderLevel">Reorder Level</label>
+                <input type="text" id="addReorderLevel" class="form-input" placeholder="10 kg">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addCost">Cost</label>
+                <input type="text" id="addCost" class="form-input" placeholder="₱ 2026.50">
+              </div>
+              
+              <div class="form-group">
+                <label for="addPrice">Price</label>
+                <input type="text" id="addPrice" class="form-input" placeholder="₱ 1476.45">
+              </div>
+
+              <div class="form-group">
+                <label for="addExpirationDate">Expiration date</label>
+                <input type="date" id="addExpirationDate" class="form-input" value="2024-12-31">
+              </div>
+            </div>
+
+            <div class="form-group-full">
+              <label for="addSupplierInfo">Supplier Info</label>
+              <input type="text" id="addSupplierName" class="form-input" placeholder="Premium Coffee Co.">
+              <input type="text" id="addSupplierPhone" class="form-input" placeholder="09999999999">
+              <input type="email" id="addSupplierEmail" class="form-input" placeholder="orders@premiumcoffee.com">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" onclick="closeAddModal()">Cancel</button>
+          <button type="button" class="btn-submit">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Edit Item -->
+    <div id="editItemModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Edit Inventory Item</h2>
+            <p class="modal-subtitle">Update item details</p>
+          </div>
+          <button class="modal-close" onclick="closeEditModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="editItemName">Item Name</label>
+                <input type="text" id="editItemName" class="form-input" value="Arabica Coffee Beans">
+              </div>
+              
+              <div class="form-group">
+                <label for="editCategory">Category</label>
+                <select id="editCategory" class="form-select">
+                  <option value="coffeebeans" selected>Coffee Beans</option>
+                  <option value="dairies">Dairies</option>
+                  <option value="syrups">Syrups</option>
+                  <option value="pastries">Pastries</option>
+                  <option value="equipments">Equipments</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="editStockQuantity">Stock Quantity</label>
+                <input type="number" id="editStockQuantity" class="form-input" value="50" min="0">
+              </div>
+              
+              <div class="form-group">
+                <label for="editUnit">Unit</label>
+                <input type="text" id="editUnit" class="form-input" value="kg">
+              </div>
+
+              <div class="form-group">
+                <label for="editReorderLevel">Reorder Level</label>
+                <input type="text" id="editReorderLevel" class="form-input" value="10 kg">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="editCost">Cost</label>
+                <input type="text" id="editCost" class="form-input" value="₱ 2026.50">
+              </div>
+              
+              <div class="form-group">
+                <label for="editPrice">Price</label>
+                <input type="text" id="editPrice" class="form-input" value="₱ 1476.45">
+              </div>
+
+              <div class="form-group">
+                <label for="editExpirationDate">Expiration date</label>
+                <input type="date" id="editExpirationDate" class="form-input" value="2024-12-31">
+              </div>
+            </div>
+
+            <div class="form-group-full">
+              <label for="editSupplierInfo">Supplier Info</label>
+              <input type="text" id="editSupplierName" class="form-input" value="Premium Coffee Co.">
+              <input type="text" id="editSupplierPhone" class="form-input" value="09999999999">
+              <input type="email" id="editSupplierEmail" class="form-input" value="orders@premiumcoffee.com">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" onclick="closeEditModal()">Cancel</button>
+          <button type="button" class="btn-submit">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get modal elements
+      const addModal = document.getElementById('addItemModal');
+      const editModal = document.getElementById('editItemModal');
+      const newItemBtn = document.querySelector('.btn-new-item');
+
+      // Open Add Modal
+      newItemBtn.addEventListener('click', function() {
+        addModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+
+      // Open Edit Modal (for Edit buttons on cards)
+      document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('btn-edit')) {
+          editModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      // Close Add Modal
+      function closeAddModal() {
+        addModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close Edit Modal
+      function closeEditModal() {
+        editModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modals when clicking outside
+      window.addEventListener('click', function(event) {
+        if (event.target === addModal) {
+          closeAddModal();
+        }
+        if (event.target === editModal) {
+          closeEditModal();
+        }
+      });
+
+      // Close modals with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          if (addModal.style.display === 'flex') {
+            closeAddModal();
+          }
+          if (editModal.style.display === 'flex') {
+            closeEditModal();
+          }
+        }
+      });
+    </script>
   </body>
 </html>
