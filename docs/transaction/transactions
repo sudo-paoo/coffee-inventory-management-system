@@ -1,0 +1,8 @@
+1. nilagay ko na yung sidebar chaka pinalitan ko rin yung link nung dalawang css yung global chaka yung mismo (oks na to)
+2. nakapasok lahat sa main content yung mismong code ko boss (oks)
+3. di ko magawa yung interface nung sa dropdown yung blue yung background chaka naka border radius parang yung mga selection (oks, diko na rin nilagay, since damay ung mismong select)
+4. chaka problem ko rin pala is diko malagay mga icons. di man nalitaw din mga icons ng sa sidebar e chaka walang icons yung sa new, search, chaka dropdown (wa, may d lang nakalink sa head, nakalimutan ko indicate)
+5. yung sa transaction history naman yung mga cards pa critique nalang hahaha (gggg)
+6. sa smaller screen naman nung mga cards goods lang ba yung masyadong malapit yung status sa time? di ko na kasi maadjust dana. chaka yung sa staff na smaller screen, magkakatabi yung mga search and dropdowns. yung sa admin kasi naka flexwrap kaya ang ayos. tatlo lang kasi yung inputs sa staff e (ggg, naglagay nalang ako ng ano for desktop tsaka mobile)
+7. all through out, goods na yan. ata... hahaha (waa, inayos ko lng styling konti)
+8. patulong nalang bossing dun sa interface ng dropdown chaka sa ibang things lalo na yung icons hehe (ggg)

@@ -30,6 +30,9 @@
   --destructive: #CC272E; /* Fire Engine Red */
   --destructive-foreground: #FFFBF5; /* Milk */
   --border: #CDC2B7; /* Pale Silver */
+  --status-stock-in: #B3D3BC; /* Jet Stream */
+  --status-stock-out: #164E63; /* Midnight Green */
+  --status-damaged: #E7000B; /* KU Crimson*/
 
   /* Sidebar */
   --sidebar: #355E63; /* Police blue */
@@ -46,6 +49,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Source Serif 4', serif;
+  overflow: hidden;
 }
 
 /* COMPONENTS */

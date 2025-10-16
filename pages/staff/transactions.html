@@ -1,13 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/pages/transactions.css">
-    <link rel="stylesheet" href="styles/globals.css">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/pages/transactions.css" />
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Transactions</title>
   </head>
   <body>
-    <!-- Transactions (staff) page -->
+    <div class="layout-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div>
+          <!-- Header -->
+          <div class="sidebar-header">
+            <div class="sidebar-logo">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="sidebar-title">Brew-kenhearted</div>
+          </div>
+
+          <!-- Menu -->
+          <div class="sidebar-menu">
+            <a class="menu-item" href="../Dashboard.html">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Dashboard</span>
+            </a>
+            <a class="menu-item" href="../staff/inventory.html">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Inventory</span>
+            </a>
+            <a class="menu-item active" href="transactions.html">
+              <i class="fa-solid fa-receipt"></i>
+              <span>Transactions</span>
+            </a>
+            <a class="menu-item" href="../settings.html">
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="sidebar-footer">
+          <div class="user-card">
+            <div class="user-avatar">J</div>
+            <div class="user-info">
+              <div class="name">John Doe</div>
+              <div class="email">john.doe@inventory.com</div>
+            </div>
+            <div class="user-options">
+              <a href="../login.html"
+                ><i class="fa-solid fa-right-from-bracket"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1>Transactions</h1>
+          <button type="button" class="btn-new-transaction">
+            <i class="fa-solid fa-plus"></i>
+            <span>New Transaction</span>
+          </button>
+        </div>
+        <!-- Class for Input/Select -->
+        <div class="filters">
+          <input type="text" placeholder="Search transaction" />
+          <select id="types">
+            <option value="alltypes">All Types</option>
+            <option value="stockin">Stock In</option>
+            <option value="stockiout">Stock Out</option>
+            <option value="damaged">Damaged</option>
+            <option value="expired">Expired</option>
+          </select>
+          <select id="time">
+            <option value="alltime">All Time</option>
+            <option value="today">Today</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+          </select>
+        </div>
+        <!-- Page Body -->
+        <div class="page-body">
+          <div class="transaction-history">
+            <h2>Transaction History</h2>
+            <!-- Transaction Cards Container -->
+            <div class="transaction-cards-container">
+              <!-- Transaction Cards -->
+              <div class="transaction-card">
+                <div class="transaction-info">
+                  <div class="info-header">
+                    <strong>Arabica Coffee Beans</strong>
+                    <span class="status stock-in mobile-only">Stock In</span>
+                  </div>
+                  <span>by Staff User</span><br />
+                  <span>Quantity: 50 units</span>
+                </div>
+                <div class="transaction-meta">
+                  <span class="status stock-in desktop-only">Stock In</span><br />
+                  <span>Time: about 2 hours ago</span><br />
+                  <span>Date: 10/4/2025 11:46:52 AM</span><br />
+                  <span class="note">Note: New shipment from supplier</span>
+                </div>
+              </div>
+
+              <div class="transaction-card">
+                <div class="transaction-info">
+                  <div class="info-header">
+                    <strong>Vanilla Syrup</strong>
+                    <span class="status stock-out mobile-only">Stock Out</span>
+                  </div>
+                  <span>by Staff User</span><br />
+                  <span>Quantity: 10 units</span>
+                </div>
+                <div class="transaction-meta">
+                  <span class="status stock-out desktop-only">Stock Out</span><br />
+                  <span>Time: about 5 hours ago</span><br />
+                  <span>Date: 10/4/2025 8:45:24 AM</span><br />
+                  <span class="note">Note: Used for daily operations</span>
+                </div>
+              </div>
+
+              <div class="transaction-card">
+                <div class="transaction-info">
+                  <div class="info-header">
+                    <strong>Hazelnut Syrup</strong>
+                    <span class="status damaged mobile-only">Damaged</span>
+                  </div>
+                  <span>by Staff User</span><br />
+                  <span>Quantity: 3 units</span>
+                </div>
+                <div class="transaction-meta">
+                  <span class="status damaged desktop-only">Damaged</span><br />
+                  <span>Time: 1 day ago</span><br />
+                  <span>Date: 10/3/2025 2:59:54 PM</span><br />
+                  <span class="note">Note: Bottles broken during storage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for New Transaction -->
+    <div id="transactionModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>New Transaction</h2>
+            <p class="modal-subtitle">Record a new transaction</p>
+          </div>
+          <button class="modal-close" onclick="closeModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="item">Item:</label>
+              <select id="item" class="form-select">
+                <option value="">Select an item</option>
+                <option value="arabica">Arabica Coffee Beans</option>
+                <option value="vanilla">Vanilla Syrup</option>
+                <option value="hazelnut">Hazelnut Syrup</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="transactionType">Transaction Type:</label>
+              <select id="transactionType" class="form-select">
+                <option value="stockin">Stock In</option>
+                <option value="stockout">Stock Out</option>
+                <option value="damaged">Damaged</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" class="form-input" value="0" min="0">
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Notes (Optional):</label>
+              <textarea id="notes" class="form-textarea" rows="3" placeholder="Add additional notes..."></textarea>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+          <button type="button" class="btn-submit">Add Transaction</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get modal element
+      const modal = document.getElementById('transactionModal');
+      const newTransactionBtn = document.querySelector('.btn-new-transaction');
+
+      // Open modal
+      newTransactionBtn.addEventListener('click', function() {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+
+      // Close modal function
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modal when clicking outside
+      window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
