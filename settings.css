@@ -1,0 +1,324 @@
+@import "../../styles/globals.css";
+
+body {
+    background: var(--background);
+}
+
+.Container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/*settings*/
+.settings {
+    flex: 1;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+    padding-bottom: 20px;
+}
+
+.settings-header {
+    padding: 20px 30px 10px 100px;
+    flex-shrink: 0;
+}
+
+.settings-header h1 {
+    color: var(--foreground);
+}
+
+.subtitle {
+    font-weight: 300;
+
+}
+
+/*Horizontal line*/
+hr {
+    height: 1px;
+    background-color: var(--foreground);
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: auto;
+}
+
+.settings-profile {
+    background: #ffffff;
+    width: auto;
+    margin: 0px 30px 20px 80px;
+    padding: 10px 25px 10px 25px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 1px lightgrey;
+    flex-shrink: 0;
+}
+
+.settings-profile h2 {
+    color: var(--foreground);
+    margin-bottom: 15px;
+
+}
+
+.settings-avatar {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/*avatar*/
+.settings-initial {
+    width: 100px;
+    height: 100px;
+    border: 1px solid lightgrey;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: var(--text-3xl);
+    flex-shrink: 0;
+    background: #405059;
+    color: #edd75a;
+    /*to prevent the circle to shrink*/
+}
+
+.settings-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px;
+}
+
+.settings-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.note {
+    display: flex;
+    margin: 0;
+}
+
+.settings-btn-upload,
+.settings-btn-remove {
+    margin-top: 5px;
+    height: 40px;
+    background: var(--primary);
+    border: none;
+    border-radius: 10px;
+    padding: 0 16px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.settings-btn-upload:hover,
+.settings-btn-remove:hover {
+    background: #4a7685;
+}
+
+
+.note {
+    color: var(--primary);
+    font-size: 0.8rem;
+
+}
+
+/*Settings Personal info*/
+.settings-personalInfo {
+    background: #ffffff;
+    margin: 0px 30px 20px 80px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 1px lightgrey;
+    flex-shrink: 0;
+}
+
+.settings-personalInfo h2,
+label {
+    color: var(--foreground);
+    margin-bottom: 10px;
+}
+
+.settings-info {
+    Display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-column {
+    flex: 1;
+    display: flex;
+    min-width: 250px;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: var(--text-base);
+    width: 450px;
+    background-color: #fff;
+    display: flex;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Special for Current Password and Role it will Full the width for single column rows */
+#currentPassword,
+select {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: var(--text-base);
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+}
+
+/*Change Password */
+.settings-changepass {
+    background: #ffffff;
+    margin: 0px 30px 20px 80px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 1px lightgrey;
+    flex-shrink: 0;
+}
+
+.settings-changepass h2 {
+    color: var(--foreground);
+    margin-bottom: 10px;
+}
+
+.settings-pass {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* settings changes buttons */
+.settings-changes {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    padding-bottom: 50px;
+    padding-right: 30px;
+    gap: 15px;
+    flex-shrink: 0;
+
+}
+
+.settings-btn-cancel {
+    height: 40px;
+    background: var(--primary);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.settings-btn-cancel:hover {
+    background: #4a7685;
+
+}
+
+.settings-btn-savechanges {
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+
+.settings-btn-savechanges:hover {
+    background: #4a7685;
+}
+
+.savechanges-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/*responsive design Mobile*/
+@media (max-width: 768px) {
+
+    .settings-header {
+        padding: 0 20px;
+    }
+
+    .settings-profile,
+    .settings-personalInfo,
+    .settings-changepass {
+        margin: 10px 20px;
+        padding: 15px;
+    }
+
+    .settings-avatar {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .settings-initial {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 0;
+    }
+
+    .settings-upload {
+
+        align-items: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-column {
+        width: 100%;
+    }
+
+   
+    input {
+        width: 100%;
+    }
+
+    .settings-changes {
+        justify-content: flex-end;
+        margin-right: 0;
+    }
+
+}
