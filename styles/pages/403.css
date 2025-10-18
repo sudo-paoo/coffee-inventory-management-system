@@ -1,4 +1,4 @@
-@import '../globals.css';
+@import "../globals.css";
 
 body {
   background: var(--background);
@@ -36,7 +36,6 @@ body {
 }
 
 .system-title {
-  font-size: var(--text-lg);
   font-weight: 400;
   color: var(--foreground);
   margin-bottom: 32px;
@@ -75,26 +74,20 @@ body {
   justify-content: center;
   gap: 8px;
   width: 100%;
-  background: var(--primary);
+  background-color: var(--primary);
   color: var(--primary-foreground);
   padding: 12px 48px;
   border-radius: 8px;
   text-decoration: none;
   font-size: var(--text-base);
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease-in-out;
   border: none;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  background: #4a7280;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(91, 138, 154, 0.3);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
+  background-color: #4F7A89;
 }
 
 .error-footer {
