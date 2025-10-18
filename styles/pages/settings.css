@@ -21,12 +21,18 @@ body {
 }
 
 .settings-header {
-  padding: 20px 30px 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
 
 .settings-header h1 {
   color: var(--foreground);
+  font-size: var(--text-2xl);
+  margin: 0;
 }
 
 .settings-body {
@@ -38,19 +44,10 @@ body {
   font-weight: 300;
 }
 
-/*Horizontal line*/
-hr {
-  height: 1px;
-  background-color: var(--foreground);
-  margin-top: 5px;
-  margin-bottom: 20px;
-  width: auto;
-}
-
 .settings-profile {
   background: #ffffff;
   width: auto;
-  margin: 0px 30px 20px 80px;
+  margin: 20px 40px;
   padding: 10px 25px 10px 25px;
   border-radius: 10px;
   box-shadow: 1px 4px 1px lightgrey;
@@ -82,7 +79,6 @@ hr {
   flex-shrink: 0;
   background: #405059;
   color: #edd75a;
-  /*to prevent the circle to shrink*/
 }
 
 .settings-upload {
@@ -92,10 +88,8 @@ hr {
   margin: 10px;
 }
 
-.settings-buttons {
-  display: flex;
+.settings-button {
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .note {
@@ -105,6 +99,7 @@ hr {
 
 .settings-btn-upload,
 .settings-btn-remove {
+  font-size: var(--text-base);
   margin-top: 5px;
   height: 40px;
   background: var(--primary);
@@ -122,19 +117,21 @@ hr {
 }
 
 .settings-btn-upload:hover,
-.settings-btn-remove:hover {
-  background: #4a7685;
+.settings-btn-remove:hover,
+.settings-btn-cancel:hover,
+.settings-btn-savechanges:hover {
+  background: #4F7A89;
 }
 
 .note {
   color: var(--primary);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 /*Settings Personal info*/
 .settings-personalInfo {
   background: #ffffff;
-  margin: 0px 30px 20px 80px;
+  margin: 20px 40px;
   padding: 20px 25px;
   border-radius: 10px;
   box-shadow: 1px 4px 1px lightgrey;
@@ -200,10 +197,20 @@ select {
   display: flex;
 }
 
+/* Disabled select (Role field) - remove dropdown icon and style */
+select:disabled {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 /*Change Password */
 .settings-changepass {
   background: #ffffff;
-  margin: 0px 30px 20px 80px;
+  margin: 20px 40px;
   padding: 20px 25px;
   border-radius: 10px;
   box-shadow: 1px 4px 1px lightgrey;
@@ -243,10 +250,7 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.settings-btn-cancel:hover {
-  background: #4a7685;
+  font-size: var(--text-base);
 }
 
 .settings-btn-savechanges {
@@ -261,10 +265,7 @@ select {
   cursor: pointer;
   transition: all 0.3s ease;
   gap: 8px;
-}
-
-.settings-btn-savechanges:hover {
-  background: #4a7685;
+  font-size: var(--text-base);
 }
 
 .savechanges-icon {
@@ -277,13 +278,13 @@ select {
 /*responsive design Mobile*/
 @media (max-width: 768px) {
   .settings-header {
-    padding: 0 20px;
+    padding: 15px 20px;
   }
 
   .settings-profile,
   .settings-personalInfo,
   .settings-changepass {
-    margin: 10px 20px;
+    margin: 15px 20px;
     padding: 15px;
   }
 
@@ -293,13 +294,29 @@ select {
   }
 
   .settings-initial {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 0;
   }
 
   .settings-upload {
     align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .settings-button {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .settings-btn-upload,
+  .settings-btn-remove {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .form-row {
@@ -308,6 +325,7 @@ select {
 
   .form-column {
     width: 100%;
+    min-width: 0;
   }
 
   input {
@@ -315,7 +333,44 @@ select {
   }
 
   .settings-changes {
-    justify-content: flex-end;
+    padding: 20px;
+    margin-left: 0;
     margin-right: 0;
+  }
+}
+
+/* Extra small devices (320px and below) */
+@media (max-width: 375px) {
+  .settings-header {
+    padding: 12px 15px;
+  }
+
+  .settings-header h1 {
+    font-size: var(--text-lg);
+  }
+
+  .settings-profile,
+  .settings-personalInfo,
+  .settings-changepass {
+    margin: 10px 15px;
+    padding: 12px;
+  }
+
+  .settings-initial {
+    width: 60px;
+    height: 60px;
+    font-size: var(--text-xl);
+  }
+
+  .settings-changes {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .settings-btn-cancel,
+  .settings-btn-savechanges {
+    width: 100%;
+    margin: 0;
   }
 }
