@@ -1,14 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/pages/settings.css">
-    <link rel="stylesheet" href="styles/globals.css">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/pages/settings.css" />
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Settings</title>
   </head>
   <body>
-    <!-- Settings page -->
-     sfgsdf
+    <div class="container">
+      <!--side bar setion-->
+      <div class="sidebar">
+        <div>
+          <!-- Header -->
+          <div class="sidebar-header">
+            <div class="sidebar-logo">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="sidebar-title">Brew-kenhearted</div>
+          </div>
+
+          <!-- Menu -->
+          <div class="sidebar-menu">
+            <a class="menu-item" href="/pages/dashboard.html">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Dashboard</span>
+            </a>
+            <a class="menu-item" href="/pages/admin/inventory.html">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Inventory</span>
+            </a>
+            <a class="menu-item" href="/pages/admin/transactions.html">
+              <i class="fa-solid fa-receipt"></i>
+              <span>Transactions</span>
+            </a>
+            <a class="menu-item active" href="settings.html">
+              <i class="fa-solid fa-gear"></i>
+              <span>Settings</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="sidebar-footer">
+          <div class="user-card">
+            <div class="user-avatar">J</div>
+            <div class="user-info">
+              <div class="name">John Doe</div>
+              <div class="email">john.doe@inventory.com</div>
+            </div>
+            <div class="user-options">
+              <a href="../login.html">
+                <i class="fa-solid fa-right-from-bracket"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Settings header-->
+      <div class="settings">
+        <div class="settings-header">
+          <h1>Profile Settings</h1>
+          <p class="subtitle">
+            Update your personal information and account settings
+          </p>
+        </div>
+        <hr />
+        <!--Settings Profile-->
+        <div class="settings-body">
+          <div class="settings-profile">
+            <h2>Profile Picture</h2>
+            <div class="settings-avatar">
+              <span class="settings-initial">J</span>
+              <!--Upload btn-->
+              <div class="settings-upload">
+                <div class="settings-button">
+                  <input 
+                    type="file" 
+                    id="profilePictureInput" 
+                    accept="image/png,image/jpeg,image/gif" 
+                    style="display: none;"
+                  />
+                  <label for="profilePictureInput" class="settings-btn-upload">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload
+                    Photo
+                  </label>
+                  <button class="settings-btn-remove" type="button">
+                    <i class="fa-solid fa-trash"></i> Remove
+                  </button>
+                  <p class="note">JPG, PNG or GIF. Max size 2MB.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Settings Personal Information-->
+          <div class="settings-personalInfo">
+            <h2>Personal Information</h2>
+            <form class="settings-info">
+              <!--First row-->
+              <div class="form-row">
+                <div class="form-column">
+                  <label>First Name</label>
+                  <input type="text" value="John" />
+                </div>
+                <div class="form-column">
+                  <label>Last Name</label>
+                  <input type="text" value="Doe" />
+                </div>
+              </div>
+              <!--second row-->
+              <div class="form-row">
+                <div class="form-column">
+                  <label>Email</label>
+                  <input type="email" value="john.doe@inventory.com" />
+                </div>
+                <div class="form-column">
+                  <label>Contact</label>
+                  <input type="text" value="09912345678" />
+                </div>
+              </div>
+              <!--Thirrd row-->
+              <div class="form-row-single">
+                <div class="form-column">
+                  <label for="role">Role</label>
+                  <select id="role">
+                    <option selected>Administrator</option>
+                    <option>Staff</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--Settings ChangePassword -->
+          <div class="settings-changepass">
+            <h2>Change Password</h2>
+            <form class="settings-pass">
+              <!--First row-->
+              <div class="form-row-single">
+                <div class="form-column">
+                  <label for="currentPassword">Current Password</label>
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    placeholder="Enter current password"
+                  />
+                </div>
+              </div>
+              <!--second row 2 columns-->
+              <div>
+                <div class="form-row">
+                  <div class="form-column">
+                    <label>New Password</label>
+                    <input type="password" placeholder="Enter new password" />
+                  </div>
+                  <div class="form-column">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm new password" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+          <!--Settings button-->
+          <div class="settings-changes">
+            <button class="settings-btn-cancel">Cancel</button>
+            <button class="settings-btn-savechanges">
+              <div class="savechanges-icon">
+                <i class="fa-regular fa-floppy-disk"></i>Save Changes
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
