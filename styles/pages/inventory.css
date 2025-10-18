@@ -32,7 +32,7 @@ body {
 
 /* Header h1 */
 .page-header h1 {
-  font-size: var(--text-5xl);
+  font-size: var(--text-2xl);
   margin: 0;
 }
 
@@ -532,6 +532,7 @@ select:focus {
 }
 
 .form-input[type="number"] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
