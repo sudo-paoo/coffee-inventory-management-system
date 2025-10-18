@@ -28,14 +28,11 @@ body {
   flex-shrink: 0;
 }
 
-.dashboard h1 {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  margin: 0;
-  color: var(--foreground);
+.dashboard-header h2 {
+  font-size: var(--text-3xl);
 }
 
-.dashboard h2 {
+.middle-section h2 {
   font-size: var(--text-xl);
   font-weight: 600;
   margin-bottom: 1rem;
@@ -344,49 +341,6 @@ body {
 }
 
 /*RESPONSIVE*/
-@media (max-width: 1024px) {
-  .dashboard h1 {
-    font-size: var(--text-xl);
-  }
-
-  .dashboard h2 {
-    font-size: var(--text-lg);
-  }
-
-  .summary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .middle-section {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-actions {
-    flex-direction: row;
-  }
-
-  .summary .card .value,
-  .summary .card .valueLow {
-    font-size: var(--text-3xl);
-  }
-
-  .summary .card h3 {
-    font-size: var(--text-sm);
-  }
-
-  .summary .card h4 {
-    font-size: var(--text-xs);
-  }
-  
-  .inventory .card h3 {
-    font-size: var(--text-base);
-  }
-  
-  .activity-item .activity-left h3 {
-    font-size: var(--text-sm);
-  }
-}
-
 @media (max-width: 768px) {
   .dashboard-header {
     padding: 15px 20px;
@@ -394,10 +348,6 @@ body {
 
   .dashboard-content {
     padding: 20px;
-  }
-
-  .dashboard h1 {
-    font-size: var(--text-xl);
   }
 
   .dashboard h2 {

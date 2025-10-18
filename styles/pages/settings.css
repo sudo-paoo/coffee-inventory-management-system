@@ -29,9 +29,8 @@ body {
   flex-shrink: 0;
 }
 
-.settings-header h1 {
+.settings-header h2 {
   color: var(--foreground);
-  font-size: var(--text-2xl);
   margin: 0;
 }
 
