@@ -362,6 +362,47 @@ select:focus {
   animation: modalSlideIn 0.3s ease-out; /* globals.css */
 }
 
+.modal-content-small {
+  max-width: 450px;
+}
+
+.delete-warning {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  align-items: flex-start;
+}
+
+.delete-warning i {
+  font-size: var(--text-2xl);
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.delete-warning p {
+  margin: 0;
+  font-size: var(--text-base);
+  color: #991b1b;
+  line-height: 1.5;
+}
+
+.delete-warning strong {
+  font-weight: 600;
+  color: #7f1d1d;
+}
+
+.btn-confirm-delete {
+  padding: 10px 24px;
+}
+
+.btn-confirm-delete:hover {
+  background: #c82333 !important;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;

@@ -388,6 +388,33 @@
       </div>
     </div>
 
+    <!-- Modal for Delete Item -->
+    <div id="deleteItemModal" class="modal">
+      <div class="modal-content modal-content-small">
+        <div class="modal-header">
+          <div>
+            <h2>Delete Item</h2>
+            <p class="modal-subtitle">Are you sure you want to delete this item?</p>
+          </div>
+          <button class="modal-close" onclick="closeDeleteModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <div class="delete-warning">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>This action cannot be undone. The item <strong id="deleteItemName"></strong> will be permanently removed from your inventory.</p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+          <button type="button" class="btn btn-delete btn-confirm-delete">Delete Item</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal for Edit Item -->
     <div id="editItemModal" class="modal">
       <div class="modal-content">
@@ -475,7 +502,9 @@
       // Get modal elements
       const addModal = document.getElementById('addItemModal');
       const editModal = document.getElementById('editItemModal');
+      const deleteModal = document.getElementById('deleteItemModal');
       const newItemBtn = document.querySelector('.btn-new-item');
+      let currentDeleteItemName = '';
 
       // Open Add Modal
       newItemBtn.addEventListener('click', function() {
@@ -489,6 +518,28 @@
           editModal.style.display = 'flex';
           document.body.style.overflow = 'hidden';
         }
+        
+        // Open Delete Modal (for Delete buttons on cards)
+        if (event.target.classList.contains('btn-delete')) {
+          // Get the item name from the card
+          const card = event.target.closest('.inventory-card');
+          const itemName = card.querySelector('.card-header h3').textContent;
+          currentDeleteItemName = itemName;
+          
+          // Update the modal with the item name
+          document.getElementById('deleteItemName').textContent = itemName;
+          
+          deleteModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      // Confirm Delete Action
+      document.querySelector('.btn-confirm-delete').addEventListener('click', function() {
+        // Close the modal
+        closeDeleteModal();
+        
+        alert('Item deleted successfully!');
       });
 
       // Close Add Modal
@@ -503,6 +554,13 @@
         document.body.style.overflow = 'auto';
       }
 
+      // Close Delete Modal
+      function closeDeleteModal() {
+        deleteModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        currentDeleteItemName = '';
+      }
+
       // Close modals when clicking outside
       window.addEventListener('click', function(event) {
         if (event.target === addModal) {
@@ -510,6 +568,9 @@
         }
         if (event.target === editModal) {
           closeEditModal();
+        }
+        if (event.target === deleteModal) {
+          closeDeleteModal();
         }
       });
 
@@ -521,6 +582,9 @@
           }
           if (editModal.style.display === 'flex') {
             closeEditModal();
+          }
+          if (deleteModal.style.display === 'flex') {
+            closeDeleteModal();
           }
         }
       });
