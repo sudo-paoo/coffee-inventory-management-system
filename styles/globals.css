@@ -1,11 +1,26 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
-/* 
-  @import "../styles/globals.css";
-*/
+/* ==========================================================================
+  Global Stylesheet Summary
+  --------------------------------------------------------------------------
+  This CSS file defines the global styles, variables, and layout structure 
+  with a sidebar and main content layout. It includes:
+  - Root variables for colors, typography, and layout consistency
+  - Global resets and font settings
+  - Standardized heading and text styles
+  - Layout structure for sidebar and main content
+  - Button styles and reusable utility classes
+  - Sidebar design with responsive behavior for mobile screens
+  - Animations and interactive hover effects for smooth UX
+  ========================================================================== */
 
-/* Root */
+/* ==========================================================================
+  ROOT VARIABLES
+  --------------------------------------------------------------------------
+  Defines global CSS variables for font sizes, color palette, and reusable 
+  theme values used throughout the layout and components.
+  ========================================================================== */
 :root {
   /* Font sizes */
   --text-xs: 0.75rem;   /* 12px */
@@ -43,72 +58,151 @@
   --sidebar-border: #D1D9E0; /* Light Silver */
 }
 
-/* Globals */
+/* ==========================================================================
+  GLOBAL STYLES
+  --------------------------------------------------------------------------
+  Applies basic reset rules, box-sizing, and default typography.
+  ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Source Serif 4', serif;
+}
+
+/* ==========================================================================
+  TYPOGRAPHY
+  --------------------------------------------------------------------------
+  Styles for headings and paragraphs for consistent hierarchy and readability.
+  ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+  LAYOUT STRUCTURE
+  --------------------------------------------------------------------------
+  Defines the main page layout including sidebar and main content container.
+  ========================================================================== */
+
+.layout-container {
+  display: flex;
+  height: 100vh;
   overflow: hidden;
 }
 
-/* COMPONENTS */
-/* MEDIA QUERIES */
-/* SIDEBAR - mobile */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 80px !important;
-    padding: 24px 0;
-  }
+/* Main content wrapper */
+.main-content {
+  flex: 1;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-  .sidebar-header {
-    justify-content: center;
-    padding: 0 16px;
-  }
+/* Page header (Title on top) */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
 
-  .sidebar-title {
-    display: none;
-  }
+/* Page body (Main content area) */
+.page-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
 
-  .sidebar-menu {
-    padding: 0 16px;
-    margin-top: 32px;
-  }
+/* Scrollable content */
+.scrollable {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
-  .menu-item {
-    justify-content: center;
-    padding: 12px 8px;
-    gap: 0;
+/* ==========================================================================
+  ANIMATIONS
+  --------------------------------------------------------------------------
+  Defines keyframes for transitions and UI feedback animations.
+  ========================================================================== */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
   }
-  
-  .menu-item span {
-    display: none;
-  }
-
-  .user-card {
-    background: transparent;
-    padding: 8px;
-    justify-content: center;
-  }
-  
-  .user-avatar {
-    display: none !important;
-  }
-  
-  .user-info {
-    display: none !important;
-  }
-  
-  .user-options {
-    margin-top: 0;
-  }
-  
-  .sidebar-footer {
-    padding: 0 16px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* SIDEBAR - desktop */
+/* ==========================================================================
+  COMPONENTS - BUTTONS
+  --------------------------------------------------------------------------
+  Styles for buttons including base, hover, and active states.
+  ========================================================================== */
+.btn {
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: 6px;
+  box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  background-color: #4a7685;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-secondary {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+  COMPONENTS - SIDEBAR
+  --------------------------------------------------------------------------
+  Defines the sidebar layout, menu items, and user section for desktop view.
+  ========================================================================== */
 .sidebar {
   width: 270px;
   height: 100dvh;
@@ -134,14 +228,14 @@
   height: 48px;
   background: #EFEBFA;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 }
 
-.sidebar-logo i {
-  color: #6a45d0;
-  font-size: var(--text-xl);
+.sidebar-logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: fill;
 }
 
 .sidebar-title {
@@ -243,4 +337,58 @@
   color: var(--sidebar-foreground);
   cursor: pointer;
   rotate: 180deg;
+}
+
+/* SIDEBAR - mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 24px 0;
+  }
+
+  .sidebar-header {
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  .sidebar-title {
+    display: none;
+  }
+
+  .sidebar-menu {
+    padding: 0 16px;
+    margin-top: 32px;
+  }
+
+  .menu-item {
+    justify-content: center;
+    padding: 12px 8px;
+    gap: 0;
+  }
+  
+  .menu-item span {
+    display: none;
+  }
+
+  .user-card {
+    background: transparent;
+    padding: 8px;
+    justify-content: center;
+  }
+  
+  .user-avatar {
+    display: none !important;
+  }
+  
+  .user-info {
+    display: none !important;
+  }
+  
+  .user-options {
+    margin-top: 0;
+  }
+  
+  .sidebar-footer {
+    padding: 0 16px;
+  }
 }

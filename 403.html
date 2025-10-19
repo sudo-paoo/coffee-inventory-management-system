@@ -2,20 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="styles/globals.css">
     <link rel="stylesheet" href="styles/pages/403.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/443395de6d.js" crossorigin="anonymous"></script>
     <title>403 - Access Forbidden</title>
   </head>
   <body>
     <div class="error-container">
       <div class="error-card">
-        <!-- Logo placeholder -->
-        <div class="logo-placeholder"></div>
+        <!-- Logo -->
+        <div class="logo">
+          <img src="assets/logo.png" alt="logo" />
+        </div>
         
         <!-- Title -->
-        <h1 class="system-title">Coffee Inventory Management System</h1>
+        <h3 class="system-title">Coffee Inventory Management System</h3>
         
         <!-- Error code -->
         <div class="error-code">403</div>
@@ -25,7 +28,7 @@
         <p class="error-message">You don't have permission to access this resource. Please contact your administrator if you believe this is an error.</p>
         
         <!-- Action button -->
-        <a href="login.html" class="btn-primary">
+        <a href="login.html" class="btn btn-primary">
           <i class="fas fa-arrow-right-to-bracket"></i>
           Go to Login
         </a>

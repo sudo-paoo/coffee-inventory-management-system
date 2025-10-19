@@ -2,22 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="/styles/pages/inventory.css" />
     <link rel="stylesheet" href="/styles/pages/inventory-modal.css" />
     <link rel="stylesheet" href="/styles/globals.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/443395de6d.js" crossorigin="anonymous"></script>
     <title>Inventory</title>
   </head>
   <body>
-    <div class="container">
+    <div class="layout-container">
       <!-- Sidebar -->
       <div class="sidebar">
         <div>
           <!-- Header -->
           <div class="sidebar-header">
             <div class="sidebar-logo">
-              <i class="fa-solid fa-mug-hot"></i>
+              <img src="/assets/logo.png" alt="logo" />
             </div>
             <div class="sidebar-title">Brew-kenhearted</div>
           </div>
@@ -32,7 +33,7 @@
               <i class="fa-solid fa-boxes-stacked"></i>
               <span>Inventory</span>
             </a>
-            <a class="menu-item" href="../admin/transactions.html">
+            <a class="menu-item" href="../staff/transactions.html">
               <i class="fa-solid fa-receipt"></i>
               <span>Transactions</span>
             </a>
@@ -65,7 +66,7 @@
         <!-- Page Header -->
         <div class="page-header">
           <h1>Inventory</h1>
-          <button type="button" class="btn-new-item">
+          <button type="button" class="btn btn-new-item">
             <i class="fa-solid fa-plus"></i>
             <span>New Item</span>
           </button>
@@ -142,7 +143,7 @@
                         </div>
                       </div>
                       <div class="card-actions">
-                        <button class="btn-edit">Edit</button>
+                        <button class="btn btn-primary btn-edit">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -193,7 +194,7 @@
                         </div>
                       </div>
                       <div class="card-actions">
-                        <button class="btn-edit">Edit</button>
+                        <button class="btn btn-primary btn-edit">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -241,7 +242,7 @@
                         </div>
                       </div>
                       <div class="card-actions">
-                        <button class="btn-edit">Edit</button>
+                        <button class="btn btn-primary btn-edit">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -289,7 +290,7 @@
                         </div>
                       </div>
                       <div class="card-actions">
-                        <button class="btn-edit">Edit</button>
+                        <button class="btn btn-primary btn-edit">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -378,8 +379,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn-cancel" onclick="closeAddModal()">Cancel</button>
-          <button type="button" class="btn-submit">Save</button>
+          <button type="button" class="btn btn-secondary btn-cancel" onclick="closeAddModal()">Cancel</button>
+          <button type="button" class="btn btn-primary btn-submit">Save</button>
         </div>
       </div>
     </div>
@@ -461,8 +462,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn-cancel" onclick="closeEditModal()">Cancel</button>
-          <button type="button" class="btn-submit">Save</button>
+          <button type="button" class="btn btn-secondary btn-cancel" onclick="closeEditModal()">Cancel</button>
+          <button type="button" class="btn btn-primary btn-submit">Save</button>
         </div>
       </div>
     </div>

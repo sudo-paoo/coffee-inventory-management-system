@@ -2,21 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="../styles/pages/settings.css" />
     <link rel="stylesheet" href="../styles/globals.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/443395de6d.js" crossorigin="anonymous"></script>
     <title>Settings</title>
   </head>
   <body>
-    <div class="container">
+    <div class="layout-container">
       <!--side bar setion-->
       <div class="sidebar">
         <div>
           <!-- Header -->
           <div class="sidebar-header">
             <div class="sidebar-logo">
-              <i class="fa-solid fa-mug-hot"></i>
+              <img src="/assets/logo.png" alt="logo" />
             </div>
             <div class="sidebar-title">Brew-kenhearted</div>
           </div>
@@ -60,16 +61,12 @@
       </div>
 
       <!--Settings header-->
-      <div class="settings">
-        <div class="settings-header">
-          <h1>Profile Settings</h1>
-          <p class="subtitle">
-            Update your personal information and account settings
-          </p>
+      <div class="main-content">
+        <div class="page-header">
+          <h2>Settings</h2>
         </div>
-        <hr />
         <!--Settings Profile-->
-        <div class="settings-body">
+        <div class="page-body scrollable">
           <div class="settings-profile">
             <h2>Profile Picture</h2>
             <div class="settings-avatar">
@@ -83,15 +80,15 @@
                     accept="image/png,image/jpeg,image/gif" 
                     style="display: none;"
                   />
-                  <label for="profilePictureInput" class="settings-btn-upload">
+                  <label for="profilePictureInput" class="btn btn-primary settings-btn-upload">
                     <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload
                     Photo
                   </label>
-                  <button class="settings-btn-remove" type="button">
+                  <button class="btn btn-primary settings-btn-remove" type="button">
                     <i class="fa-solid fa-trash"></i> Remove
                   </button>
-                  <p class="note">JPG, PNG or GIF. Max size 2MB.</p>
                 </div>
+                <p class="note">JPG, PNG or GIF. Max size 2MB.</p>
               </div>
             </div>
           </div>
@@ -125,7 +122,7 @@
               <div class="form-row-single">
                 <div class="form-column">
                   <label for="role">Role</label>
-                  <select id="role">
+                  <select id="role" disabled>
                     <option selected>Administrator</option>
                     <option>Staff</option>
                   </select>
@@ -166,8 +163,8 @@
           
           <!--Settings button-->
           <div class="settings-changes">
-            <button class="settings-btn-cancel">Cancel</button>
-            <button class="settings-btn-savechanges">
+            <button class="btn btn-secondary settings-btn-cancel">Cancel</button>
+            <button class="btn btn-primary settings-btn-savechanges">
               <div class="savechanges-icon">
                 <i class="fa-regular fa-floppy-disk"></i>Save Changes
               </div>

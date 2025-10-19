@@ -3,23 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="../styles/pages/dashboard.css" />
     <link rel="stylesheet" href="../styles/globals.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <script src="https://kit.fontawesome.com/443395de6d.js" crossorigin="anonymous"></script>
     <title>Dashboard</title>
   </head>
 
   <body>
-    <div class="container">
+    <div class="layout-container">
       <div class="sidebar">
         <div>
           <!-- Header  -->
           <div class="sidebar-header">
             <div class="sidebar-logo">
-              <i class="fa-solid fa-mug-hot"></i>
+              <img src="/assets/logo.png" alt="logo" />
             </div>
             <div class="sidebar-title">Brew-kenhearted</div>
           </div>
@@ -27,28 +25,28 @@
           <div class="sidebar-menu">
             <a
               class="menu-item active"
-              href="palitan niyo ng route /admin/inventory ganun"
+              href="dashboard.html"
             >
               <i class="fa-solid fa-chart-line"></i>
               <span>Dashboard</span>
             </a>
             <a
               class="menu-item"
-              href="palitan niyo ng route /admin/inventory ganun"
+              href="../pages/admin/inventory.html"
             >
               <i class="fa-solid fa-boxes-stacked"></i>
               <span>Inventory</span>
             </a>
             <a
               class="menu-item"
-              href="palitan niyo ng route /admin/inventory ganun"
+              href="../pages/admin/transactions.html"
             >
               <i class="fa-solid fa-receipt"></i>
               <span>Transactions</span>
             </a>
             <a
               class="menu-item"
-              href="palitan niyo ng route /admin/inventory ganun"
+              href="../pages/settings.html"
             >
               <i class="fa-solid fa-gear"></i>
               <span>Settings</span>
@@ -71,10 +69,11 @@
           </div>
         </div>
       </div>
-      <div class="dashboard">
-        <h1>Dashboard</h1>
-        <hr />
-        <div class="dashboard-content">
+      <div class="main-content">
+        <div class="page-header">
+          <h2>Dashboard</h2>
+        </div>
+        <div class="page-body scrollable">
           <!-- summary -->
           <div class="summary">
             <div class="card">
@@ -103,11 +102,11 @@
             </div>
             <div class="card">
               <div class="card-header">
-                <h3>Active Users</h3>
-                <i class="fa-solid fa-users card-icon"></i>
+                <h3>Out of stock</h3>
+                <i class="fa-solid fa-boxes-stacked card-icon"></i>
               </div>
-              <p class="value">3</p>
-              <h4>System users</h4>
+              <p class="value out-of-stock">0</p>
+              <h4>Items need restocking</h4>
             </div>
           </div>
           <!-- middle section(inventory by category & recent activity) -->
@@ -234,7 +233,7 @@
               </div>
             </div>
           </div>
-          <!-- quick actions            -->
+          <!-- quick actions -->
           <div class="quick">
             <h2>Quick Actions</h2>
             <div class="quick-actions">
