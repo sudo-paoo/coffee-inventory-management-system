@@ -12,14 +12,13 @@ body {
 .logo {
   display: grid;
   place-items: center;
-  padding-top: 2.5rem;
+  padding-top: .75rem;
   padding-bottom: 1rem;
 }
 
 .logo img {
-  width: 100px;
-  height: 100px;
-  background-color: #d3d3d3;
+  width: 120px;
+  height: 120px;
 }
 
 .header {
