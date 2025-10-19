@@ -5,47 +5,12 @@ body {
   background: var(--background);
 }
 
-.container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* Main Content */
-.main-content {
-  flex: 1;
-  background-color: var(--background);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* Main Header */
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
 /* Upper right new button */
 .btn-new-item {
   background-color: var(--primary);
-  color: white;
   font-size: var(--text-xl);
-  width: 220px;
-  border: none;
+  width: 200px;
   padding: 10px 18px;
-  border-radius: 6px;
-  box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
 }
 
 .btn-new-item:hover {
@@ -67,11 +32,7 @@ body {
 
 /* Main Content Body */
 .page-body {
-  flex: 1;
   padding: 0 40px 20px 40px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
   min-height: 0;
 }
 
@@ -291,21 +252,9 @@ select:focus {
 .btn-delete {
   width: 100%;
   padding: 6px 12px;
-  border: none;
   border-radius: 4px;
   font-size: var(--text-sm);
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-edit {
-  background: var(--primary);
-  color: white;
-}
-
-.btn-edit:hover {
-  background: #4a7685;
 }
 
 .btn-delete {
@@ -314,7 +263,7 @@ select:focus {
 }
 
 .btn-delete:hover {
-  background: #c82333;
+  background: #c82333 !important;
 }
 
 /* Responsive Design */
@@ -410,19 +359,7 @@ select:focus {
   overflow-y: auto;
   overflow-x: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  animation: modalSlideIn 0.3s ease-out;
-}
-
-/* Modal animation slide in */
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: modalSlideIn 0.3s ease-out; /* globals.css */
 }
 
 .modal-header {
@@ -548,17 +485,13 @@ select:focus {
 .modal-footer .btn-submit {
   padding: 10px 20px;
   font-size: var(--text-base);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .modal-footer .btn-cancel {
   background-color: var(--background);
   color: var(--foreground);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .modal-footer .btn-cancel:hover {
@@ -566,18 +499,7 @@ select:focus {
 }
 
 .modal-footer .btn-submit {
-  background-color: var(--primary);
-  color: white;
   padding: 10px 24px;
-}
-
-.modal-footer .btn-submit:hover {
-  background-color: #4a7685;
-}
-
-.modal-footer .btn-cancel:active,
-.modal-footer .btn-submit:active {
-  transform: scale(0.98);
 }
 
 /* Mobile Modal Styles */

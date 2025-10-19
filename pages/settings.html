@@ -9,7 +9,7 @@
     <title>Settings</title>
   </head>
   <body>
-    <div class="container">
+    <div class="layout-container">
       <!--side bar setion-->
       <div class="sidebar">
         <div>
@@ -60,12 +60,12 @@
       </div>
 
       <!--Settings header-->
-      <div class="settings">
-        <div class="settings-header">
+      <div class="main-content">
+        <div class="page-header">
           <h2>Settings</h2>
         </div>
         <!--Settings Profile-->
-        <div class="settings-body">
+        <div class="page-body scrollable">
           <div class="settings-profile">
             <h2>Profile Picture</h2>
             <div class="settings-avatar">
@@ -79,15 +79,15 @@
                     accept="image/png,image/jpeg,image/gif" 
                     style="display: none;"
                   />
-                  <label for="profilePictureInput" class="settings-btn-upload">
+                  <label for="profilePictureInput" class="btn btn-primary settings-btn-upload">
                     <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload
                     Photo
                   </label>
-                  <button class="settings-btn-remove" type="button">
+                  <button class="btn btn-primary settings-btn-remove" type="button">
                     <i class="fa-solid fa-trash"></i> Remove
                   </button>
-                  <p class="note">JPG, PNG or GIF. Max size 2MB.</p>
                 </div>
+                <p class="note">JPG, PNG or GIF. Max size 2MB.</p>
               </div>
             </div>
           </div>
@@ -162,8 +162,8 @@
           
           <!--Settings button-->
           <div class="settings-changes">
-            <button class="settings-btn-cancel">Cancel</button>
-            <button class="settings-btn-savechanges">
+            <button class="btn btn-secondary settings-btn-cancel">Cancel</button>
+            <button class="btn btn-primary settings-btn-savechanges">
               <div class="savechanges-icon">
                 <i class="fa-regular fa-floppy-disk"></i>Save Changes
               </div>

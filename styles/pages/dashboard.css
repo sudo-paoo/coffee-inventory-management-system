@@ -6,28 +6,6 @@ body {
   color: var(--foreground);
 }
 
-.container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.dashboard {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: var(--background);
-}
-
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
 .dashboard-header h2 {
   font-size: var(--text-3xl);
 }
@@ -40,14 +18,8 @@ body {
 }
 
 /*DASHBOARD GRID*/
-.dashboard-content {
-  display: flex;
-  flex-direction: column;
+.page-body {
   gap: 1.5rem;
-  width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex: 1;
   padding: 20px 40px;
 }
 
@@ -149,33 +121,15 @@ body {
 }
 
 .quick-actions .btn {
-  height: 50px;
   flex: 1;
-  border: 1px solid black;
-  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   font-size: var(--text-base);
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
 }
 
 .quick-actions .btn i {
   font-size: var(--text-lg);
-}
-
-.quick-actions .btn-primary {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-}
-
-.quick-actions .btn-secondary {
-  background-color: var(--background);
-  color: var(--foreground);
 }
 
 .quick-actions .btn:hover {
