@@ -189,7 +189,7 @@
                     </div>
                     <div class="activity-right">
                       <span class="activity-amount">50 kg</span>
-                      <span class="activity-date">20255-01-15</span>
+                      <span class="activity-date">2025-01-15</span>
                     </div>
                   </div>
                 </div>
@@ -202,7 +202,7 @@
                     </div>
                     <div class="activity-right">
                       <span class="activity-amount">12 bottles</span>
-                      <span class="activity-date">20255-01-14</span>
+                      <span class="activity-date">2025-01-14</span>
                     </div>
                   </div>
                 </div>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="activity-right">
                       <span class="activity-amount">500 pieces</span>
-                      <span class="activity-date">20255-01-12</span>
+                      <span class="activity-date">2025-01-12</span>
                     </div>
                   </div>
                 </div>
@@ -225,12 +225,12 @@
                   ></i>
                   <div class="activity-content">
                     <div class="activity-left">
-                      <h3>Robusta Coffee Beans</h3>
+                      <h3>All-Purpose Flour</h3>
                       <p>Low Stock Alert</p>
                     </div>
                     <div class="activity-right">
-                      <span class="activity-amount">8 kg</span>
-                      <span class="activity-date">20255-01-10</span>
+                      <span class="activity-amount">50 kg</span>
+                      <span class="activity-date">2025-01-10</span>
                     </div>
                   </div>
                 </div>
@@ -241,7 +241,7 @@
           <div class="quick">
             <h2>Quick Actions</h2>
             <div class="quick-actions">
-              <button class="btn btn-primary">
+              <button class="btn btn-primary btn-new-item">
                 <i class="fa-solid fa-mug-hot"></i>
                 Add New Item
               </button>
@@ -254,5 +254,127 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal for Add Item -->
+    <div id="addItemModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Add Inventory Item</h2>
+            <p class="modal-subtitle">Add a new item to inventory</p>
+          </div>
+          <button class="modal-close" onclick="closeAddModal()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addItemName">Item Name</label>
+                <input type="text" id="addItemName" class="form-input" placeholder="Arabica Coffee Beans">
+              </div>
+              
+              <div class="form-group">
+                <label for="addCategory">Category</label>
+                <select id="addCategory" class="form-select">
+                  <option value="">Coffee Beans</option>
+                  <option value="dairies">Dairies</option>
+                  <option value="syrups">Syrups</option>
+                  <option value="pastries">Pastries</option>
+                  <option value="equipments">Equipments</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addStockQuantity">Stock Quantity</label>
+                <input type="number" id="addStockQuantity" class="form-input" placeholder="50" min="0">
+              </div>
+              
+              <div class="form-group">
+                <label for="addUnit">Unit</label>
+                <input type="text" id="addUnit" class="form-input" placeholder="kg">
+              </div>
+
+              <div class="form-group">
+                <label for="addReorderLevel">Reorder Level</label>
+                <input type="text" id="addReorderLevel" class="form-input" placeholder="10 kg">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addCost">Cost</label>
+                <input type="text" id="addCost" class="form-input" placeholder="₱ 2026.50">
+              </div>
+              
+              <div class="form-group">
+                <label for="addPrice">Price</label>
+                <input type="text" id="addPrice" class="form-input" placeholder="₱ 1476.45">
+              </div>
+
+              <div class="form-group">
+                <label for="addExpirationDate">Expiration date</label>
+                <input type="date" id="addExpirationDate" class="form-input" value="2024-12-31">
+              </div>
+            </div>
+
+            <div class="form-group-full">
+              <label for="addSupplierInfo">Supplier Info</label>
+              <input type="text" id="addSupplierName" class="form-input" placeholder="Premium Coffee Co.">
+              <input type="text" id="addSupplierPhone" class="form-input" placeholder="09999999999">
+              <input type="email" id="addSupplierEmail" class="form-input" placeholder="orders@premiumcoffee.com">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-cancel" onclick="closeAddModal()">Cancel</button>
+          <button type="button" class="btn btn-primary btn-submit">Save</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Get modal elements
+      const addModal = document.getElementById('addItemModal');
+      const newItemBtn = document.querySelector('.btn-new-item');
+
+      // Open Add Modal
+      newItemBtn.addEventListener('click', function() {
+        addModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+
+      // Close Add Modal
+      function closeAddModal() {
+        addModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+      
+      // Close modals when clicking outside
+      window.addEventListener('click', function(event) {
+        if (event.target === addModal) {
+          closeAddModal();
+        }
+        if (event.target === editModal) {
+          closeEditModal();
+        }
+      });
+
+      // Close modals with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          if (addModal.style.display === 'flex') {
+            closeAddModal();
+          }
+          if (editModal.style.display === 'flex') {
+            closeEditModal();
+          }
+        }
+      });
+    </script>
   </body>
 </html>
