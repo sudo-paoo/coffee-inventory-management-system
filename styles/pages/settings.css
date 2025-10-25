@@ -5,12 +5,13 @@ body {
 }
 
 .settings-profile {
-  background: #ffffff;
+  background: var(--background);
+  border: 1px solid var(--border);
   width: auto;
   margin: 20px 40px;
   padding: 10px 25px 10px 25px;
   border-radius: 10px;
-  box-shadow: 1px 4px 1px lightgrey;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
 }
 
@@ -82,11 +83,12 @@ body {
 
 /*Settings Personal info*/
 .settings-personalInfo {
-  background: #ffffff;
+  background: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   margin: 20px 40px;
   padding: 20px 25px;
   border-radius: 10px;
-  box-shadow: 1px 4px 1px lightgrey;
   flex-shrink: 0;
 }
 
@@ -128,7 +130,7 @@ input {
   font-size: var(--text-base);
   width: 100%;
   max-width: 450px;
-  background-color: #fff;
+  background-color: var(--background);
   display: flex;
 }
 
@@ -141,12 +143,12 @@ input:focus {
 /* Special for Current Password and Role it will Full the width for single column rows */
 #currentPassword,
 select {
+  background-color: var(--background);
   padding: 12px;
   border: 1px solid var(--border);
   border-radius: 6px;
   font-size: var(--text-base);
   width: 100%;
-  background-color: #fff;
   display: flex;
 }
 
@@ -162,11 +164,12 @@ select:disabled {
 
 /*Change Password */
 .settings-changepass {
-  background: #ffffff;
+  background: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   margin: 20px 40px;
   padding: 20px 25px;
   border-radius: 10px;
-  box-shadow: 1px 4px 1px lightgrey;
   flex-shrink: 0;
 }
 
