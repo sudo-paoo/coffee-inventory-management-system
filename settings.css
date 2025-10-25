@@ -1,0 +1,329 @@
+@import "../styles/globals.css";
+
+body {
+  background: var(--background);
+}
+
+.settings-profile {
+  background: var(--background);
+  border: 1px solid var(--border);
+  width: auto;
+  margin: 20px 40px;
+  padding: 10px 25px 10px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.settings-profile h2 {
+  color: var(--foreground);
+  margin-bottom: 15px;
+}
+
+.settings-avatar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/*avatar*/
+.settings-initial {
+  width: 100px;
+  height: 100px;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: var(--text-3xl);
+  flex-shrink: 0;
+  background: #405059;
+  color: #edd75a;
+}
+
+.settings-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-upload label {
+  font-weight: normal;
+}
+
+.settings-button {
+  display: flex;
+  gap: 10px;
+}
+
+.note {
+  display: flex;
+  margin: 0;
+}
+
+.settings-btn-upload,
+.settings-btn-remove {
+  font-size: var(--text-base);
+  height: 40px;
+  padding: 0 16px;
+}
+
+.settings-btn-upload:hover,
+.settings-btn-remove:hover,
+.settings-btn-cancel:hover,
+.settings-btn-savechanges:hover {
+  background: #4F7A89;
+}
+
+.note {
+  color: var(--primary);
+  font-size: var(--text-sm);
+}
+
+/*Settings Personal info*/
+.settings-personalInfo {
+  background: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 20px 40px;
+  padding: 20px 25px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.settings-personalInfo h2,
+label {
+  color: var(--foreground);
+  margin-bottom: 10px;
+}
+
+.settings-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  flex: 1;
+  display: flex;
+  min-width: 250px;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: var(--text-base);
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--background);
+  display: flex;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Special for Current Password and Role it will Full the width for single column rows */
+#currentPassword,
+select {
+  background-color: var(--background);
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: var(--text-base);
+  width: 100%;
+  display: flex;
+}
+
+/* Disabled select (Role field) - remove dropdown icon and style */
+select:disabled {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/*Change Password */
+.settings-changepass {
+  background: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 20px 40px;
+  padding: 20px 25px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.settings-changepass h2 {
+  color: var(--foreground);
+  margin-bottom: 15px;
+}
+
+.settings-pass {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Vertical layout for password fields */
+.settings-pass .form-row {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-pass .form-column {
+  max-width: 100%;
+}
+
+.settings-pass input {
+  max-width: 100%;
+}
+
+/* settings changes buttons */
+.settings-changes {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  padding: 20px 40px;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.settings-btn-cancel {
+  height: 40px;
+  padding: 10px 10px 10px 10px;
+  font-size: var(--text-base);
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.settings-btn-savechanges {
+  height: 40px;
+  padding: 10px 10px 10px 10px;
+  font-size: var(--text-base);
+}
+
+.savechanges-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/*responsive design Mobile*/
+@media (max-width: 768px) {
+  .settings-header {
+    padding: 15px 20px;
+  }
+
+  .settings-profile,
+  .settings-personalInfo,
+  .settings-changepass {
+    margin: 15px 20px;
+    padding: 15px;
+  }
+
+  .settings-avatar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .settings-initial {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0;
+  }
+
+  .settings-upload {
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .settings-button {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .settings-btn-upload,
+  .settings-btn-remove {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-column {
+    width: 100%;
+    min-width: 0;
+  }
+
+  input {
+    max-width: 100%;
+  }
+
+  .settings-changes {
+    padding: 20px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Extra small devices (320px and below) */
+@media (max-width: 375px) {
+  .settings-header {
+    padding: 12px 15px;
+  }
+
+  .settings-header h1 {
+    font-size: var(--text-lg);
+  }
+
+  .settings-profile,
+  .settings-personalInfo,
+  .settings-changepass {
+    margin: 10px 15px;
+    padding: 12px;
+  }
+
+  .settings-initial {
+    width: 60px;
+    height: 60px;
+    font-size: var(--text-xl);
+  }
+
+  .settings-changes {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .settings-btn-cancel,
+  .settings-btn-savechanges {
+    width: 100%;
+    margin: 0;
+  }
+}

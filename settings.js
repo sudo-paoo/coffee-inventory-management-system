@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const emailInput = document.querySelector('.settings-info input[type="email"]');
   const roleSelect = document.getElementById('role');
 
-
+  //To make the settings personal information automatically show the right user information
+  //instead of the fixed value of the personal info
   if (firstNameInput && lastNameInput) {
     const nameParts = user.name.split(' ');
     firstNameInput.value = nameParts[0] || '';
