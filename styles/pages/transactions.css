@@ -248,8 +248,6 @@ select:focus {
   /* Transaction history */
   .transaction-history h2 {
     font-size: var(--text-lg);
-    margin-right: 0;
-    text-align: center;
   }
 
   /* Transaction cards */

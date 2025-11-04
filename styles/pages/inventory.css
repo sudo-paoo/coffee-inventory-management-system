@@ -298,7 +298,6 @@ select:focus {
 
   .inventory-items h2 {
     font-size: var(--text-lg);
-    margin-right: 0;
   }
 
   .inventory-cards-grid {

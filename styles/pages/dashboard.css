@@ -313,6 +313,11 @@ body {
     gap: 0.75rem;
   }
 
+  .middle-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .summary .card {
     padding: 1.25rem;
   }
