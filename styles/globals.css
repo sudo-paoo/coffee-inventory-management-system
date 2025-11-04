@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6, p {
   ========================================================================== */
 .sidebar {
   width: 270px;
-  height: 100dvh;
+  height: 100vh;
   background: var(--sidebar);
   box-shadow: 1px 0px 0.1px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(120px);
