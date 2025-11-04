@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Check if already logged in
   if (Auth.isLoggedIn()) {
     // Redirect to dashboard if already logged in
-    window.location.href = '/pages/dashboard.html';
+    AppConfig.navigate('pages/dashboard.html');
     return;
   }
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (user) {
         // Login successful - redirect to dashboard
-        window.location.href = '/pages/dashboard.html';
+        AppConfig.navigate('pages/dashboard.html');
       } else {
         // Login failed - show error message
         showError('Invalid email or password. Please try again.');

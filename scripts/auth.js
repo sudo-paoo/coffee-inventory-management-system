@@ -45,7 +45,7 @@ const Auth = {
   // Logout current user
   logout() {
     sessionStorage.removeItem('currentUser');
-    window.location.href = '/login.html';
+    AppConfig.navigate('login.html');
   },
 
   // Get current logged in user
@@ -81,7 +81,7 @@ const Auth = {
   // Require authentication - redirect to login if not logged in
   requireAuth() {
     if (!this.isLoggedIn()) {
-      window.location.href = '/login.html';
+      AppConfig.navigate('login.html');
       return false;
     }
     return true;
@@ -95,7 +95,7 @@ const Auth = {
     const userRole = this.getUserRole();
 
     if (!roles.includes(userRole)) {
-      window.location.href = '/403.html';
+      AppConfig.navigate('403.html');
       return false;
     }
 
@@ -108,22 +108,22 @@ const Auth = {
     
     // Shared pages (both admin and staff)
     if (page === 'dashboard') {
-      return '/pages/dashboard.html';
+      return AppConfig.getPath('pages/dashboard.html');
     }
     if (page === 'settings') {
-      return '/pages/settings.html';
+      return AppConfig.getPath('pages/settings.html');
     }
 
     // Role-specific pages
     if (page === 'inventory') {
       return role === 'admin' 
-        ? '/pages/admin/inventory.html' 
-        : '/pages/staff/inventory.html';
+        ? AppConfig.getPath('pages/admin/inventory.html')
+        : AppConfig.getPath('pages/staff/inventory.html');
     }
     if (page === 'transactions') {
       return role === 'admin' 
-        ? '/pages/admin/transactions.html' 
-        : '/pages/staff/transactions.html';
+        ? AppConfig.getPath('pages/admin/transactions.html')
+        : AppConfig.getPath('pages/staff/transactions.html');
     }
 
     return '#';
