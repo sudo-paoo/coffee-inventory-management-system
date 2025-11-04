@@ -546,7 +546,7 @@ select:focus {
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
-    max-height: 95vh;
+    max-height: 90vh;
   }
 
   .modal-header {
