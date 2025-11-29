@@ -179,6 +179,10 @@ body {
   max-width: 500px;
 }
 
+.modal-footer .btn {
+  padding: 10px 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .settings-content {

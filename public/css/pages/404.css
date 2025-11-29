@@ -71,13 +71,25 @@ body {
   margin-right: auto;
 }
 
+.error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .btn-primary {
   width: 100%;
+  max-width: 300px;
   padding: 12px 48px;
   border-radius: 8px;
   text-decoration: none;
   font-size: var(--text-base);
   font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .error-footer {

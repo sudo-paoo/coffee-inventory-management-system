@@ -1,5 +1,4 @@
 <?php
-// views/partials/sidebar.php
 $current_user = get_session_user();
 $active_page = $active_page ?? '';
 ?>
