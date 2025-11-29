@@ -12,12 +12,6 @@ class Database {
                 $username = 'root';
                 $password = '';
                 
-                // ! For PRODUCTION (InfinityFree)
-                // $host = 'sql100.infinityfree.com';
-                // $dbname = 'if0_40520491_brewkenhearted_system';
-                // $username = 'if0_40520491';
-                // $password = 'AZC5UF1ZUi3IPN';
-                
                 self::$connection = new PDO(
                     "mysql:host={$host};dbname={$dbname};charset=utf8mb4",
                     $username,
