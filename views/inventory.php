@@ -61,12 +61,20 @@ ob_start();
 
 <div class="page-header">
     <h2>Inventory</h2>
-    <?php if ($current_user['role'] === 'admin'): ?>
-    <button type="button" class="btn btn-new-item" onclick="openAddModal()">
-        <i class="fa-solid fa-plus"></i>
-        <span>Add New Item</span>
-    </button>
-    <?php endif; ?>
+    <div style="display: flex; gap: 10px;">
+        <?php if ($current_user['role'] === 'admin' || $current_user['role'] === 'staff'): ?>
+        <button type="button" class="btn btn-stock-out" onclick="openBatchStockOutModal()">
+            <i class="fa-solid fa-minus"></i>
+            <span>Stock Out Items</span>
+        </button>
+        <?php endif; ?>
+        <?php if ($current_user['role'] === 'admin'): ?>
+        <button type="button" class="btn btn-new-item" onclick="openAddModal()">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add New Item</span>
+        </button>
+        <?php endif; ?>
+    </div>
 </div>
 
 <div class="page-body scrollable">
@@ -175,11 +183,15 @@ ob_start();
 <!-- Delete Confirmation Modal -->
 <?php require __DIR__ . '/partials/modals/delete_item_modal.php'; ?>
 
+<!-- Batch Stock Out Modal -->
+<?php require __DIR__ . '/partials/modals/batch_stock_out_modal.php'; ?>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('viewItemModal').style.display = 'none';
     document.getElementById('editItemModal').style.display = 'none';
     document.getElementById('deleteItemModal').style.display = 'none';
+    document.getElementById('batchStockOutModal').style.display = 'none';
     
     const successAlert = document.getElementById('successAlert');
     const errorAlert = document.getElementById('errorAlert');
@@ -268,7 +280,7 @@ function closeDeleteModal() {
 }
 
 window.onclick = function(event) {
-    const modals = ['viewItemModal', 'editItemModal', 'deleteItemModal'];
+    const modals = ['viewItemModal', 'editItemModal', 'deleteItemModal', 'batchStockOutModal'];
     modals.forEach(modalId => {
         const modal = document.getElementById(modalId);
         if (event.target === modal) {

@@ -211,6 +211,10 @@ body {
   white-space: nowrap;
 }
 
+.status-badge i {
+  margin-right: 5px;
+}
+
 .status-received {
   background: #d1fae5;
   color: #065f46;
@@ -224,6 +228,16 @@ body {
 .status-cancelled {
   background: #fecaca;
   color: #991b1b;
+}
+
+.status-damaged {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-expired {
+  background: #fef3c7;
+  color: #92400e;
 }
 
 /* No Data State */

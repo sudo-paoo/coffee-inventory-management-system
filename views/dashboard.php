@@ -34,7 +34,7 @@ $activities = $pdo->query("
     FROM transactions t
     JOIN items i ON t.item_id = i.id
     ORDER BY t.transaction_date DESC
-    LIMIT 5
+    LIMIT 6
 ")->fetchAll();
 
 ob_start();

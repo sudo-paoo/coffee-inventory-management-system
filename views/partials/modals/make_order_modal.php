@@ -68,7 +68,7 @@
                             </tbody>
                         </table>
                         
-                        <button type="button" class="btn btn-secondary" onclick="addOrderItem()" style="margin-top: 10px; padding: 10px 20px;">
+                        <button type="button" class="btn btn-primary" onclick="addOrderItem()" style="margin-top: 10px; padding: 10px 20px;">
                             <i class="fa-solid fa-plus"></i> Add Item
                         </button>
                     </div>

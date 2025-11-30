@@ -67,6 +67,36 @@ if ($date_filter) {
 $history_stmt->execute($params);
 $transaction_history = $history_stmt->fetchAll();
 
+// Get stock transactions
+$stock_sql = "SELECT t.*, i.name as item_name, u.first_name, u.last_name
+                FROM transactions t
+                LEFT JOIN items i ON t.item_id = i.id
+                LEFT JOIN users u ON t.user_id = u.id
+                WHERE 1=1";
+
+$stock_params = [];
+
+if ($search) {
+    $stock_sql .= " AND i.name LIKE ?";
+    $stock_params[] = "%$search%";
+}
+
+if ($type_filter) {
+    $stock_sql .= " AND t.transaction_type = ?";
+    $stock_params[] = $type_filter;
+}
+
+if ($date_filter) {
+    $stock_sql .= " AND DATE(t.transaction_date) = ?";
+    $stock_params[] = $date_filter;
+}
+
+$stock_sql .= " ORDER BY t.transaction_date DESC";
+
+$stock_stmt = $pdo->prepare($stock_sql);
+$stock_stmt->execute($stock_params);
+$stock_transactions = $stock_stmt->fetchAll();
+
 // Get all suppliers for the modal
 $all_suppliers = $pdo->query("SELECT * FROM suppliers WHERE status = 'active' ORDER BY name")->fetchAll();
 
@@ -130,7 +160,25 @@ ob_start();
             />
             <?php endif; ?>
             
-            <?php if ($search || $date_filter): ?>
+            <?php if ($active_tab === 'stock-transactions'): ?>
+            <select name="type" id="typeFilter" onchange="document.getElementById('filterForm').submit()">
+                <option value="">All Types</option>
+                <option value="stock-in" <?= $type_filter === 'stock-in' ? 'selected' : '' ?>>Stock In</option>
+                <option value="stock-out" <?= $type_filter === 'stock-out' ? 'selected' : '' ?>>Stock Out</option>
+                <option value="damaged" <?= $type_filter === 'damaged' ? 'selected' : '' ?>>Damaged</option>
+                <option value="expired" <?= $type_filter === 'expired' ? 'selected' : '' ?>>Expired</option>
+            </select>
+            
+            <input 
+                type="date" 
+                name="date" 
+                id="dateFilter"
+                value="<?= escape($date_filter) ?>"
+                onchange="document.getElementById('filterForm').submit()"
+            />
+            <?php endif; ?>
+            
+            <?php if ($search || $date_filter || $type_filter): ?>
             <a href="?page=transactions&tab=<?= $active_tab ?>" class="btn btn-secondary">
                 <i class="fa-solid fa-times"></i> Clear
             </a>
@@ -146,6 +194,9 @@ ob_start();
             </a>
             <a href="?page=transactions&tab=transaction-history" class="tab <?= $active_tab === 'transaction-history' ? 'active' : '' ?>">
                 Transaction History (<?= count($transaction_history) ?>)
+            </a>
+            <a href="?page=transactions&tab=stock-transactions" class="tab <?= $active_tab === 'stock-transactions' ? 'active' : '' ?>">
+                Stock Transactions (<?= count($stock_transactions) ?>)
             </a>
         </div>
     </div>
@@ -199,7 +250,7 @@ ob_start();
                     </div>
                 <?php endif; ?>
             </div>
-        <?php else: ?>
+        <?php elseif ($active_tab === 'transaction-history'): ?>
             <!-- Transaction History List -->
             <div class="orders-list">
                 <?php if (count($transaction_history) > 0): ?>
@@ -246,6 +297,80 @@ ob_start();
                     </div>
                 <?php endif; ?>
             </div>
+        <?php elseif ($active_tab === 'stock-transactions'): ?>
+            <!-- Stock Transactions List -->
+            <div class="orders-list">
+                <?php if (count($stock_transactions) > 0): ?>
+                    <?php foreach ($stock_transactions as $stock): 
+                        $type_class = '';
+                        $type_icon = 'fa-box';
+                        
+                        switch ($stock['transaction_type']) {
+                            case 'stock-in':
+                                $type_class = 'status-received';
+                                $type_icon = 'fa-arrow-down';
+                                break;
+                            case 'stock-out':
+                                $type_class = 'status-pending';
+                                $type_icon = 'fa-arrow-up';
+                                break;
+                            case 'damaged':
+                                $type_class = 'status-damaged';
+                                $type_icon = 'fa-triangle-exclamation';
+                                break;
+                            case 'expired':
+                                $type_class = 'status-expired';
+                                $type_icon = 'fa-clock';
+                                break;
+                        }
+                    ?>
+                    <div class="order-card">
+                        <div class="order-card-header">
+                            <div>
+                                <h3><?= escape($stock['item_name']) ?></h3>
+                                <p class="order-supplier">By: <?= escape($stock['first_name'] . ' ' . $stock['last_name']) ?></p>
+                            </div>
+                            <span class="status-badge <?= $type_class ?>">
+                                <i class="fa-solid <?= $type_icon ?>"></i>
+                                <?= ucfirst(str_replace('-', ' ', $stock['transaction_type'])) ?>
+                            </span>
+                        </div>
+                        <div class="order-card-body">
+                            <div class="order-info">
+                                <div class="info-item">
+                                    <span class="info-label">Quantity:</span>
+                                    <span class="info-value"><?= $stock['quantity'] . ' ' . escape($stock['unit']) ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Before:</span>
+                                    <span class="info-value"><?= $stock['value_before'] . ' ' . escape($stock['unit']) ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">After:</span>
+                                    <span class="info-value"><?= $stock['value_after'] . ' ' . escape($stock['unit']) ?></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Date:</span>
+                                    <span class="info-value"><?= date('M d, Y g:i A', strtotime($stock['transaction_date'])) ?></span>
+                                </div>
+                                <?php if ($stock['note']): ?>
+                                <div class="info-item" style="grid-column: 1 / -1;">
+                                    <span class="info-label">Note:</span>
+                                    <span class="info-value"><?= escape($stock['note']) ?></span>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="no-data">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3>No Stock Transactions</h3>
+                        <p>No stock movements recorded yet</p>
+                    </div>
+                <?php endif; ?>
+            </div>
         <?php endif; ?>
     </div>
 </div>
@@ -257,7 +382,6 @@ ob_start();
 <?php require __DIR__ . '/partials/modals/mark_received_modal.php'; ?>
 
 <script>
-// Auto-hide alerts after 5 seconds
 document.addEventListener('DOMContentLoaded', function() {
     // Hide modals on page load
     const makeOrderModal = document.getElementById('makeOrderModal');
@@ -275,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 successAlert.style.display = 'none';
             }, 500);
-        }, 5000);
+        }, 3000);
     }
     
     if (errorAlert) {
@@ -285,11 +409,11 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 errorAlert.style.display = 'none';
             }, 500);
-        }, 5000);
+        }, 3000);
     }
 });
 
-// Search debounce functionality
+// Search debounce
 let searchTimeout;
 const searchInput = document.getElementById('searchInput');
 const filterForm = document.getElementById('filterForm');
@@ -298,19 +422,16 @@ if (searchInput) {
     searchInput.addEventListener('input', function() {
         clearTimeout(searchTimeout);
         
-        // Store cursor position
         const cursorPosition = this.selectionStart;
         const searchValue = this.value;
         
         searchTimeout = setTimeout(function() {
-            // Store the search value and cursor position before submit
             sessionStorage.setItem('transactionsSearchValue', searchValue);
             sessionStorage.setItem('transactionsSearchCursor', cursorPosition);
             filterForm.submit();
         }, 500);
     });
     
-    // Restore focus and cursor position after page load
     window.addEventListener('load', function() {
         const savedValue = sessionStorage.getItem('transactionsSearchValue');
         const savedCursor = sessionStorage.getItem('transactionsSearchCursor');
@@ -320,7 +441,6 @@ if (searchInput) {
             if (savedCursor !== null) {
                 searchInput.setSelectionRange(savedCursor, savedCursor);
             }
-            // Clear the stored values
             sessionStorage.removeItem('transactionsSearchValue');
             sessionStorage.removeItem('transactionsSearchCursor');
         }
@@ -342,7 +462,6 @@ function markAsReceived(orderId, orderNumber, supplierName) {
     document.getElementById('receive-order-number').textContent = orderNumber;
     document.getElementById('receive-supplier-name').textContent = 'Supplier: ' + supplierName;
     
-    // Fetch order items via AJAX
     fetch('<?php echo base_url('get_order_items.php'); ?>?order_id=' + orderId)
         .then(response => response.json())
         .then(data => {
@@ -366,7 +485,6 @@ function markAsReceived(orderId, orderNumber, supplierName) {
                 let total = 0;
                 
                 data.items.forEach(item => {
-                    // Use total_cost from database if available, otherwise calculate
                     const itemTotal = item.total_cost ? parseFloat(item.total_cost) : (parseFloat(item.quantity) * parseFloat(item.unit_cost));
                     total += itemTotal;
                     
@@ -401,7 +519,6 @@ function closeMarkReceivedModal() {
     document.getElementById('markReceivedModal').style.display = 'none';
 }
 
-// Close modal when clicking outside
 window.onclick = function(event) {
     const modals = ['makeOrderModal', 'markReceivedModal'];
     modals.forEach(modalId => {

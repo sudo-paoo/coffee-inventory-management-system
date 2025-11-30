@@ -33,6 +33,26 @@ body {
 }
 
 /* ------------------------------------------------------------
+   BUTTON: Stock Out
+------------------------------------------------------------ */
+
+.btn-stock-out {
+  background-color: #f59e0b;
+  color: white;
+  font-size: var(--text-xl);
+  width: 200px;
+  padding: 10px 18px;
+}
+
+.btn-stock-out:hover {
+  background-color: #d97706;
+}
+
+.btn-stock-out i {
+  font-size: var(--text-lg);
+}
+
+/* ------------------------------------------------------------
    FILTERS
 ------------------------------------------------------------ */
 
@@ -244,6 +264,13 @@ body {
 }
 .view-btn:hover {
   background: rgba(91, 138, 154, 0.1);
+}
+
+.warning-btn {
+  color: #f59e0b;
+}
+.warning-btn:hover {
+  background: rgba(245, 158, 11, 0.1);
 }
 
 .edit-btn {
@@ -508,12 +535,21 @@ body {
 ------------------------------------------------------------ */
 
 @media (max-width: 768px) {
-  .btn-new-item {
+  .page-header > div {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .btn-new-item,
+  .btn-stock-out {
     width: auto;
     padding: 10px;
     font-size: var(--text-base);
+    min-width: 44px;
   }
-  .btn-new-item span {
+  
+  .btn-new-item span,
+  .btn-stock-out span {
     display: none;
   }
 
