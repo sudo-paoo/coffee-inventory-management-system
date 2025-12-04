@@ -23,13 +23,13 @@
                 </div>
                 
                 <div class="form-group-full">
-                    <label for="batch-note">General Notes</label>
+                    <label for="batch-note">Notes</label>
                     <textarea 
                         name="general_note" 
                         id="batch-note" 
                         class="form-input" 
                         rows="2"
-                        placeholder="Add general notes for this batch transaction..."
+                        placeholder="Add notes for this transaction..."
                     ></textarea>
                 </div>
                 
@@ -61,89 +61,6 @@
         </form>
     </div>
 </div>
-
-<style>
-.stock-out-item-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr auto;
-    gap: 12px;
-    align-items: start;
-    padding: 15px;
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-.stock-out-item-row .form-group {
-    margin: 0;
-}
-
-.stock-out-item-row label {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--foreground);
-    margin-bottom: 6px;
-}
-
-.stock-out-item-row .form-select,
-.stock-out-item-row .form-input {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: var(--text-base);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: white;
-    transition: all 0.2s ease;
-}
-
-.stock-out-item-row .form-select:focus,
-.stock-out-item-row .form-input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(91, 138, 154, 0.1);
-}
-
-.stock-out-item-row .form-input:disabled {
-    background: var(--background);
-    color: #6b7280;
-    cursor: not-allowed;
-}
-
-.stock-out-item-row small {
-    font-size: var(--text-xs);
-    color: #6b7280;
-    margin-top: 4px;
-    display: block;
-}
-
-.stock-out-item-row .remove-btn {
-    background: var(--destructive);
-    color: white;
-    border: none;
-    padding: 10px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 26px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.stock-out-item-row .remove-btn:hover {
-    background: #b91c1c;
-    transform: translateY(-1px);
-}
-
-.stock-out-error {
-    color: var(--destructive);
-    font-size: var(--text-sm);
-    margin-top: 5px;
-    display: none;
-}
-</style>
 
 <script>
 let stockOutRowCounter = 0;

@@ -1,22 +1,8 @@
-/* ==========================================================================
-   INVENTORY PAGE STYLES
-   --------------------------------------------------------------------------
-   Page-specific styles for inventory management. Modal styles are in
-   globals.css which is loaded separately in the HTML head.
-   ========================================================================== */
-
-/* ------------------------------------------------------------
-   GLOBAL
------------------------------------------------------------- */
-
 body {
   background: var(--background);
 }
 
-/* ------------------------------------------------------------
-   BUTTON: New Item
------------------------------------------------------------- */
-
+/* New Item Button */
 .btn-new-item {
   background-color: var(--primary);
   font-size: var(--text-xl);
@@ -32,10 +18,7 @@ body {
   font-size: var(--text-lg);
 }
 
-/* ------------------------------------------------------------
-   BUTTON: Stock Out
------------------------------------------------------------- */
-
+/* Stock Out Button */
 .btn-stock-out {
   background-color: #f59e0b;
   color: white;
@@ -52,10 +35,7 @@ body {
   font-size: var(--text-lg);
 }
 
-/* ------------------------------------------------------------
-   FILTERS
------------------------------------------------------------- */
-
+/* Filters */
 .filters {
   display: flex;
   gap: 10px;
@@ -72,19 +52,13 @@ body {
   align-items: center;
 }
 
-/* ------------------------------------------------------------
-   MAIN CONTENT
------------------------------------------------------------- */
-
+/* Page Body */
 .page-body {
   padding: 0 40px 20px 40px;
   min-height: 0;
 }
 
-/* ------------------------------------------------------------
-   INPUTS
------------------------------------------------------------- */
-
+/* Filter Inputs */
 .filters input,
 .filters select,
 .filters .btn {
@@ -118,10 +92,7 @@ body {
   border-color: var(--primary);
 }
 
-/* ------------------------------------------------------------
-   TABLE VIEW: CONTAINER
------------------------------------------------------------- */
-
+/* Inventory Table Container */
 .inventory-table-container {
   margin-top: 10px;
   flex: 1;
@@ -147,7 +118,7 @@ body {
   color: var(--foreground);
 }
 
-/* Scroll wrapper */
+/* Table Scroll Wrapper */
 .table-wrapper {
   flex: 1;
   overflow-y: auto;
@@ -155,7 +126,7 @@ body {
   min-height: 0;
 }
 
-/* Table */
+/* Inventory Table */
 .inventory-table {
   width: 100%;
   border-collapse: collapse;
@@ -207,10 +178,7 @@ body {
   text-align: right;
 }
 
-/* ------------------------------------------------------------
-   STATUS BADGES
------------------------------------------------------------- */
-
+/* Status Badges */
 .status-badge {
   display: inline-block;
   padding: 4px 12px;
@@ -235,10 +203,7 @@ body {
   color: #991b1b;
 }
 
-/* ------------------------------------------------------------
-   TABLE ACTIONS
------------------------------------------------------------- */
-
+/* Table Actions */
 .actions-cell {
   text-align: center;
   white-space: nowrap;
@@ -287,10 +252,7 @@ body {
   background: rgba(204, 39, 46, 0.1);
 }
 
-/* ------------------------------------------------------------
-   NO DATA
------------------------------------------------------------- */
-
+/* No Data State */
 .no-data {
   text-align: center;
   padding: 60px 20px !important;
@@ -310,10 +272,7 @@ body {
   color: #9ca3af;
 }
 
-/* ------------------------------------------------------------
-   VIEW DETAILS GRID
------------------------------------------------------------- */
-
+/* View Details Grid */
 .view-details-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -342,198 +301,7 @@ body {
   grid-column: 1 / -1;
 }
 
-/* ------------------------------------------------------------
-   CARD VIEW (GRID VERSION)
------------------------------------------------------------- */
-
-.inventory-items {
-  margin-top: 10px;
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--background);
-  min-height: 0;
-}
-
-.inventory-items h2 {
-  font-size: var(--text-xl);
-  margin: 20px 30px 10px 0;
-  text-align: right;
-  color: var(--foreground);
-  flex-shrink: 0;
-}
-
-.inventory-cards-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-  min-height: 0;
-}
-
-.inventory-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-content: start;
-}
-
-.inventory-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.2s ease;
-}
-
-.inventory-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  width: 100%;
-  height: 150px;
-  background: #f5f5f5;
-  overflow: hidden;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 12px;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  margin-bottom: 6px;
-  gap: 10px;
-}
-
-.card-header h3 {
-  font-size: var(--text-lg);
-  font-weight: 600;
-  margin: 0;
-  color: var(--foreground);
-  flex: 1;
-}
-
-.badge {
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.badge-in-stock {
-  background: #1e5a6b;
-  color: white;
-}
-
-.badge-low-stock {
-  background: #dc3545;
-  color: white;
-}
-
-.card-category {
-  color: var(--text-light);
-  font-size: var(--text-sm);
-  margin-bottom: 8px;
-}
-
-.card-details {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  gap: 10px;
-}
-
-.detail-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.detail-label {
-  font-size: var(--text-sm);
-  color: var(--text-light);
-}
-
-.detail-value {
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--text);
-}
-
-.card-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.meta-label {
-  font-size: var(--text-sm);
-  color: var(--text-light);
-}
-
-.meta-value {
-  font-size: var(--text-sm);
-  color: var(--text);
-}
-
-.card-footer {
-  display: flex;
-  gap: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-}
-
-.card-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 80px;
-}
-
-.btn-edit,
-.btn-delete {
-  width: 100%;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-.btn-delete {
-  background: #dc3545;
-  color: white;
-}
-
-.btn-delete:hover {
-  background: #c82333 !important;
-}
-
-
-/* ------------------------------------------------------------
-   RESPONSIVE
------------------------------------------------------------- */
-
+/* Responsive */
 @media (max-width: 768px) {
   .page-header > div {
     display: flex;
@@ -596,21 +364,6 @@ body {
     font-size: var(--text-sm);
   }
 
-  .inventory-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .card-footer {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .card-actions {
-    flex-direction: row;
-    width: 100%;
-  }
-  
   .view-details-grid {
     grid-template-columns: 1fr;
   }
