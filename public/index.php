@@ -27,6 +27,7 @@ $page_access = [
     'transactions' => ['admin', 'staff'],
     'orders' => ['admin', 'staff'],
     'settings' => ['admin', 'staff'],
+    'users' => ['admin'],
 ];
 
 // Routes
@@ -76,6 +77,14 @@ switch ($page) {
             require_role($page_access[$page]);
         }
         render_view('settings.php', ['pdo' => $pdo]);
+        break;
+        
+    case 'users':
+        require_auth();
+        if (isset($page_access[$page])) {
+            require_role($page_access[$page]);
+        }
+        render_view('users.php', ['pdo' => $pdo]);
         break;
         
     case '403':

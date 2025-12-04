@@ -12,6 +12,7 @@ $active_page = $active_page ?? 'dashboard';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo asset_url('logo.png'); ?>" type="image/x-icon" />
     <link rel="stylesheet" href="<?php echo css_url('globals.css'); ?>?v=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="<?php echo css_url('components/modals.css'); ?>?v=<?php echo time(); ?>" />
     <link rel="stylesheet" href="<?php echo css_url('pages/' . $page_css . '.css'); ?>?v=<?php echo time(); ?>" />
     <script src="https://kit.fontawesome.com/443395de6d.js" crossorigin="anonymous"></script>
     <title><?php echo $page_title; ?> - Coffee Inventory</title>

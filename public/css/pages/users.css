@@ -1,0 +1,32 @@
+@import url('inventory.css');
+
+/* Add user button */
+.btn-add-user {
+  padding: 10px 18px;
+  font-size: var(--text-xl);
+  width: 200px;
+}
+
+.btn-add-user i {
+  font-size: var(--text-lg);
+}
+
+/* Additional status badges for user roles */
+.status-admin {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-staff {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+/* Success button color for enable action */
+.success-btn {
+  color: #16a34a;
+}
+
+.success-btn:hover {
+  background: rgba(22, 163, 74, 0.1);
+}

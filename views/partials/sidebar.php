@@ -32,6 +32,13 @@ $active_page = $active_page ?? '';
                 <i class="fa-solid fa-gear"></i>
                 <span>Settings</span>
             </a>
+            <?php if ($current_user['role'] === 'admin'): ?>
+            <a class="menu-item <?php echo ($active_page === 'users') ? 'active' : ''; ?>" 
+               href="<?php echo base_url('?page=users'); ?>">
+                <i class="fa-solid fa-users"></i>
+                <span>Users</span>
+            </a>
+            <?php endif; ?>
         </div>
     </div>
 
