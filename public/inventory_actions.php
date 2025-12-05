@@ -112,8 +112,7 @@ try {
                 }
                 
                 // Create upload directory
-                $doc_root = $_SERVER['DOCUMENT_ROOT'];
-                $upload_dir = $doc_root . '/assets/' . $category_folder . '/';
+                $upload_dir = __DIR__ . '/assets/' . $category_folder . '/';
                 if (!is_dir($upload_dir)) {
                     mkdir($upload_dir, 0755, true);
                 }
@@ -126,7 +125,7 @@ try {
                     
                     // Delete old image if exists and is different
                     if ($existing_image && $existing_image !== $image_path) {
-                        $old_image_path = $doc_root . '/' . $existing_image;
+                        $old_image_path = __DIR__ . '/' . $existing_image;
                         if (file_exists($old_image_path)) {
                             unlink($old_image_path);
                         }

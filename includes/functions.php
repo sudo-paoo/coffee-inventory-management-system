@@ -7,7 +7,7 @@
 
 // URL helpers - Configuration for local
 function base_url($path = '') {
-    $base = '/coffee-shop-inventory-management-system/public';
+    $base = '/coffee-inventory-management-system/public';
     return $base . '/' . ltrim($path, '/');
 
 }
