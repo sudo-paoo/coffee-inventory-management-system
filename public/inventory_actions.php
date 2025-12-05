@@ -56,6 +56,7 @@ try {
             $price = $_POST['price'] ?? 0;
             $expiration_date = $_POST['expiration_date'] ?? null;
             $notes = trim($_POST['notes'] ?? '');
+            $existing_image = $_POST['existing_image'] ?? null;
             
             // Validation
             if (empty($name)) {
@@ -66,6 +67,74 @@ try {
             if (empty($category_id)) {
                 $_SESSION['error_message'] = 'Category is required.';
                 redirect('index.php?page=inventory');
+            }
+            
+            // Handle image upload
+            $image_path = $existing_image;
+            
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['image'];
+                $file_name = $file['name'];
+                $file_tmp = $file['tmp_name'];
+                $file_size = $file['size'];
+                $file_error = $file['error'];
+                
+                // Validate file size
+                if ($file_size > 2 * 1024 * 1024) {
+                    $_SESSION['error_message'] = 'Image size must be less than 2MB.';
+                    redirect('index.php?page=inventory');
+                }
+                
+                // Validate file type
+                $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                $file_type = mime_content_type($file_tmp);
+                
+                if (!in_array($file_type, $allowed_types)) {
+                    $_SESSION['error_message'] = 'Invalid image format. Only JPG, PNG, and GIF are allowed.';
+                    redirect('index.php?page=inventory');
+                }
+                
+                // Get file extension
+                $file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+                
+                // Generate unique filename
+                $new_filename = uniqid('item_', true) . '.' . $file_extension;
+                
+                // Determine upload directory
+                $category_stmt = $pdo->prepare("SELECT name FROM categories WHERE id = ?");
+                $category_stmt->execute([$category_id]);
+                $category = $category_stmt->fetch();
+                
+                if ($category) {
+                    $category_folder = strtolower(str_replace(' ', '-', $category['name']));
+                } else {
+                    $category_folder = 'uncategorized';
+                }
+                
+                // Create upload directory
+                $doc_root = $_SERVER['DOCUMENT_ROOT'];
+                $upload_dir = $doc_root . '/assets/' . $category_folder . '/';
+                if (!is_dir($upload_dir)) {
+                    mkdir($upload_dir, 0755, true);
+                }
+                
+                // Upload file
+                $upload_path = $upload_dir . $new_filename;
+                if (move_uploaded_file($file_tmp, $upload_path)) {
+                    // Store relative path
+                    $image_path = 'assets/' . $category_folder . '/' . $new_filename;
+                    
+                    // Delete old image if exists and is different
+                    if ($existing_image && $existing_image !== $image_path) {
+                        $old_image_path = $doc_root . '/' . $existing_image;
+                        if (file_exists($old_image_path)) {
+                            unlink($old_image_path);
+                        }
+                    }
+                } else {
+                    $_SESSION['error_message'] = 'Failed to upload image.';
+                    redirect('index.php?page=inventory');
+                }
             }
             
             if ($item_id) {
@@ -86,6 +155,7 @@ try {
                         price = :price,
                         expiration_date = :expiration_date,
                         notes = :notes,
+                        image_path = :image_path,
                         updated_at = NOW(),
                         updated_by = :updated_by
                         WHERE id = :id";
@@ -102,6 +172,7 @@ try {
                     ':price' => $price,
                     ':expiration_date' => $expiration_date ?: null,
                     ':notes' => $notes ?: null,
+                    ':image_path' => $image_path,
                     ':updated_by' => $current_user['id'],
                     ':id' => $item_id
                 ]);
@@ -116,11 +187,11 @@ try {
                 
                 $sql = "INSERT INTO items (
                         name, category_id, supplier_id, unit, stock_quantity, 
-                        reorder_level, cost, price, expiration_date, notes,
+                        reorder_level, cost, price, expiration_date, notes, image_path,
                         created_at, updated_at
                     ) VALUES (
                         :name, :category_id, :supplier_id, :unit, :stock_quantity,
-                        :reorder_level, :cost, :price, :expiration_date, :notes,
+                        :reorder_level, :cost, :price, :expiration_date, :notes, :image_path,
                         NOW(), NOW()
                     )";
                 
@@ -135,7 +206,8 @@ try {
                     ':cost' => $cost,
                     ':price' => $price,
                     ':expiration_date' => $expiration_date ?: null,
-                    ':notes' => $notes ?: null
+                    ':notes' => $notes ?: null,
+                    ':image_path' => $image_path
                 ]);
                 
                 $_SESSION['success_message'] = 'Item added successfully!';
@@ -157,6 +229,12 @@ try {
                 $_SESSION['error_message'] = 'Item ID is required.';
                 redirect('index.php?page=inventory');
             }
+            
+            // Get item details including image path
+            $item_sql = "SELECT image_path FROM items WHERE id = :id";
+            $item_stmt = $pdo->prepare($item_sql);
+            $item_stmt->execute([':id' => $item_id]);
+            $item = $item_stmt->fetch(PDO::FETCH_ASSOC);
             
             // Check if item has related transactions
             $check_sql = "SELECT COUNT(*) as count FROM transactions WHERE item_id = :id";
@@ -184,6 +262,15 @@ try {
             $sql = "DELETE FROM items WHERE id = :id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':id' => $item_id]);
+            
+            // Delete associated image file if exists
+            if ($item && !empty($item['image_path'])) {
+                $doc_root = $_SERVER['DOCUMENT_ROOT'];
+                $image_file_path = $doc_root . '/' . $item['image_path'];
+                if (file_exists($image_file_path)) {
+                    unlink($image_file_path);
+                }
+            }
             
             $_SESSION['success_message'] = 'Item deleted successfully!';
             redirect('index.php?page=inventory');

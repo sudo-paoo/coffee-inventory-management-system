@@ -9,11 +9,35 @@
             <button class="modal-close" onclick="closeEditModal()">&times;</button>
         </div>
         
-        <form id="itemForm" method="POST" action="<?php echo base_url('inventory_actions.php'); ?>">
+        <form id="itemForm" method="POST" action="<?php echo base_url('inventory_actions.php'); ?>" enctype="multipart/form-data">
             <input type="hidden" name="action" value="save" id="form-action">
             <input type="hidden" name="id" id="item-id">
+            <input type="hidden" name="existing_image" id="existing-image">
             
             <div class="modal-body">
+                <div class="form-group-full">
+                    <label for="item-image">Item Image</label>
+                    <div class="image-upload-container">
+                        <div class="image-preview" id="image-preview">
+                            <img id="preview-img" src="" alt="Preview" style="display: none;">
+                            <div id="preview-placeholder" class="preview-placeholder">
+                                <i class="fa-solid fa-image"></i>
+                                <p>No image selected</p>
+                            </div>
+                        </div>
+                        <div class="image-upload-controls">
+                            <input type="file" id="item-image" name="image" class="form-input-file" accept="image/jpeg,image/jpg,image/png,image/gif">
+                            <button type="button" class="btn btn-secondary btn-choose-file" onclick="document.getElementById('item-image').click()">
+                                <i class="fa-solid fa-upload"></i> Choose Image
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-remove-image" onclick="removeImage()" style="display: none;">
+                                <i class="fa-solid fa-times"></i> Remove
+                            </button>
+                            <small class="form-help">Supported: JPG, PNG, GIF (Max 2MB)</small>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="item-name">Item Name *</label>

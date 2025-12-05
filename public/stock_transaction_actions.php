@@ -133,7 +133,6 @@ try {
                 $pdo->rollBack();
                 throw $e;
             }
-            break;
             
         case 'stock-out':
         case 'damaged':
@@ -224,7 +223,6 @@ try {
                 $pdo->rollBack();
                 throw $e;
             }
-            break;
             
         default:
             $_SESSION['error_message'] = 'Invalid action.';

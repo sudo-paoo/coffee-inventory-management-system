@@ -107,69 +107,84 @@ ob_start();
         </form>
     </div>
 
-    <div class="inventory-table-container">
-        <div class="inventory-table-header">
-            <h3>Inventory Items (<?php echo count($items); ?>)</h3>
-        </div>
-        
-        <div class="table-wrapper">
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Item Name</th>
-                        <th>Category</th>
-                        <th>Stock</th>
-                        <th>Reorder Level</th>
-                        <th>Unit</th>
-                        <th>Cost</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Supplier</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (count($items) > 0): ?>
-                        <?php foreach ($items as $item): ?>
-                        <tr>
-                            <td class="item-name"><?php echo escape($item['name']); ?></td>
-                            <td><?php echo escape($item['category_name']); ?></td>
-                            <td class="text-center"><?php echo $item['stock_quantity']; ?></td>
-                            <td class="text-center"><?php echo $item['reorder_level']; ?></td>
-                            <td class="text-center"><?php echo escape($item['unit']); ?></td>
-                            <td class="text-right"><?php echo format_currency($item['cost']); ?></td>
-                            <td class="text-right"><?php echo format_currency($item['price']); ?></td>
-                            <td>
-                                <span class="status-badge status-<?php echo $item['status']; ?>">
+    <div class="inventory-items">
+        <h2>Inventory Items</h2>
+        <!-- Inventory Cards Container (wrapper) -->
+        <div class="inventory-cards-container">
+            <!-- Grid wrapper -->
+            <div class="inventory-cards-grid">
+                <?php if (count($items) > 0): ?>
+                    <?php foreach ($items as $item): ?>
+                    <!-- Inventory Card -->
+                    <div class="inventory-card">
+                        <div class="card-image">
+                            <?php if (!empty($item['image_path'])): ?>
+                                <img src="<?php echo base_url($item['image_path']); ?>" alt="<?php echo escape($item['name']); ?>" />
+                            <?php else: ?>
+                                <div class="no-image-placeholder">
+                                    <i class="fa-solid fa-image"></i>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h3><?php echo escape($item['name']); ?></h3>
+                                <span class="badge badge-<?php echo $item['status']; ?>">
                                     <?php echo ucfirst(str_replace('-', ' ', $item['status'])); ?>
                                 </span>
-                            </td>
-                            <td><?php echo escape($item['supplier_name']); ?></td>
-                            <td class="actions-cell">
-                                <button class="action-btn view-btn" onclick='viewItem(<?php echo json_encode($item); ?>)' title="View Details">
-                                    <i class="fa-solid fa-eye"></i>
-                                </button>
-                                <?php if ($current_user['role'] === 'admin'): ?>
-                                <button class="action-btn edit-btn" onclick='editItem(<?php echo json_encode($item); ?>)' title="Edit Item">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button class="action-btn delete-btn" onclick='deleteItem(<?php echo $item['id']; ?>, "<?php echo escape($item['name']); ?>")' title="Delete Item">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="10" class="no-data">
-                                <i class="fa-solid fa-box-open"></i>
-                                <p>No items found</p>
-                            </td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+                            </div>
+                            <p class="card-category"><?php echo escape($item['category_name']); ?></p>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Stock</span>
+                                    <span class="detail-value"><?php echo $item['stock_quantity'] . ' ' . escape($item['unit']); ?></span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Reorder</span>
+                                    <span class="detail-value"><?php echo $item['reorder_level'] . ' ' . escape($item['unit']); ?></span>
+                                </div>
+                            </div>
+                            <div class="card-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Price</span>
+                                    <span class="detail-value"><?php echo format_currency($item['price']); ?></span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Cost</span>
+                                    <span class="detail-value"><?php echo format_currency($item['cost']); ?></span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Expiration date</span>
+                                        <span class="meta-value"><?php echo $item['expiration_date'] ?: 'N/A'; ?></span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Supplier</span>
+                                        <span class="meta-value"><?php echo escape($item['supplier_name']); ?></span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-view" onclick='viewItem(<?php echo json_encode($item); ?>)' title="View">
+                                        View
+                                    </button>
+                                    <?php if ($current_user['role'] === 'admin'): ?>
+                                    <button class="btn btn-primary btn-edit" onclick='editItem(<?php echo json_encode($item); ?>)'>Edit</button>
+                                    <button class="btn btn-delete" onclick='deleteItem(<?php echo $item['id']; ?>, "<?php echo escape($item['name']); ?>")'>Delete</button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="no-items-found">
+                        <i class="fa-solid fa-box-open"></i>
+                        <p>No items found</p>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
@@ -231,6 +246,17 @@ function viewItem(item) {
     document.getElementById('view-expiration').textContent = item.expiration_date || 'N/A';
     document.getElementById('view-description').textContent = item.notes || 'No notes available';
     
+    // Handle image display
+    const imageContainer = document.getElementById('view-image-container');
+    const imageElement = document.getElementById('view-item-image');
+    if (item.image_path) {
+        imageElement.src = '<?php echo base_url(); ?>' + item.image_path;
+        imageElement.alt = item.name;
+        imageContainer.style.display = 'block';
+    } else {
+        imageContainer.style.display = 'none';
+    }
+    
     const modal = document.getElementById('viewItemModal');
     modal.style.display = 'flex';
 }
@@ -244,6 +270,8 @@ function openAddModal() {
     document.getElementById('modalTitle').textContent = 'Add New Item';
     document.getElementById('itemForm').reset();
     document.getElementById('item-id').value = '';
+    document.getElementById('existing-image').value = '';
+    resetImagePreview();
     document.getElementById('editItemModal').style.display = 'flex';
 }
 
@@ -261,8 +289,80 @@ function editItem(item) {
     document.getElementById('item-expiration').value = item.expiration_date || '';
     document.getElementById('item-description').value = item.notes || '';
     
+    // Handle existing image
+    if (item.image_path) {
+        document.getElementById('existing-image').value = item.image_path;
+        showImagePreview('<?php echo base_url(); ?>' + item.image_path);
+    } else {
+        document.getElementById('existing-image').value = '';
+        resetImagePreview();
+    }
+    
     document.getElementById('editItemModal').style.display = 'flex';
 }
+
+// Image preview functions
+function resetImagePreview() {
+    const previewImg = document.getElementById('preview-img');
+    const placeholder = document.getElementById('preview-placeholder');
+    const removeBtn = document.querySelector('.btn-remove-image');
+    const fileInput = document.getElementById('item-image');
+    
+    previewImg.style.display = 'none';
+    previewImg.src = '';
+    placeholder.style.display = 'flex';
+    removeBtn.style.display = 'none';
+    fileInput.value = '';
+}
+
+function showImagePreview(src) {
+    const previewImg = document.getElementById('preview-img');
+    const placeholder = document.getElementById('preview-placeholder');
+    const removeBtn = document.querySelector('.btn-remove-image');
+    
+    previewImg.src = src;
+    previewImg.style.display = 'block';
+    placeholder.style.display = 'none';
+    removeBtn.style.display = 'inline-flex';
+}
+
+function removeImage() {
+    resetImagePreview();
+    document.getElementById('existing-image').value = '';
+}
+
+// Image file input change handler
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('item-image');
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Validate file size
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Image size must be less than 2MB');
+                    resetImagePreview();
+                    return;
+                }
+                
+                // Validate file type
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                if (!validTypes.includes(file.type)) {
+                    alert('Please select a valid image file (JPG, PNG, or GIF)');
+                    resetImagePreview();
+                    return;
+                }
+                
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    showImagePreview(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+});
 
 function closeEditModal() {
     document.getElementById('editItemModal').style.display = 'none';

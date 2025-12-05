@@ -8,11 +8,11 @@
             </div>
             <button class="modal-close" onclick="closeMarkReceivedModal()">&times;</button>
         </div>
-        
+
         <form id="markReceivedForm" method="POST" action="<?php echo base_url('order_actions.php'); ?>">
             <input type="hidden" name="action" value="receive">
             <input type="hidden" name="order_id" id="receive-order-id">
-            
+
             <div class="modal-body">
                 <div class="receive-confirmation-message">
                     <div class="text-center" style="margin-bottom: 20px;">
@@ -20,7 +20,7 @@
                         <h3 style="margin: 0 0 5px 0; font-size: var(--text-xl);">Order: <span id="receive-order-number" style="color: var(--primary);"></span></h3>
                         <p id="receive-supplier-name" style="margin: 0; color: #6b7280; font-size: var(--text-sm);"></p>
                     </div>
-                    
+
                     <!-- Order Items -->
                     <div class="order-items-section">
                         <h4 style="margin: 0 0 10px 0; font-size: var(--text-base); color: var(--foreground);">Order Items:</h4>
@@ -31,7 +31,7 @@
                             <!-- Total will be populated by JavaScript -->
                         </div>
                     </div>
-                    
+
                     <div class="warning-box">
                         <p style="margin: 0 0 10px 0; color: #92400e; font-weight: 600;">
                             <i class="fa-solid fa-triangle-exclamation"></i> This action will:
@@ -43,13 +43,13 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="form-group-full" style="margin-top: 20px;">
                     <label for="receive-notes">Additional Notes (Optional)</label>
                     <textarea id="receive-notes" name="notes" class="form-input" rows="3" placeholder="Add any notes about the received order..."></textarea>
                 </div>
             </div>
-            
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-cancel" onclick="closeMarkReceivedModal()">Cancel</button>
                 <button type="submit" class="btn btn-primary btn-submit">
@@ -57,4 +57,5 @@
                 </button>
             </div>
         </form>
-
+    </div>
+</div>

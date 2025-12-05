@@ -10,6 +10,10 @@
         </div>
         
         <div class="modal-body">
+            <div class="view-image-container" id="view-image-container" style="display: none;">
+                <img id="view-item-image" src="" alt="Item Image" class="view-item-image" />
+            </div>
+            
             <div class="view-details-grid">
                 <div class="view-detail-item">
                     <label>Item Name</label>
