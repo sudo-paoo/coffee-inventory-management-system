@@ -235,18 +235,7 @@ try {
             $item_stmt->execute([':id' => $item_id]);
             $item = $item_stmt->fetch(PDO::FETCH_ASSOC);
             
-            // Check if item has related transactions
-            $check_sql = "SELECT COUNT(*) as count FROM transactions WHERE item_id = :id";
-            $check_stmt = $pdo->prepare($check_sql);
-            $check_stmt->execute([':id' => $item_id]);
-            $result = $check_stmt->fetch(PDO::FETCH_ASSOC);
-            
-            if ($result['count'] > 0) {
-                $_SESSION['error_message'] = 'Cannot delete item with existing transactions.';
-                redirect('index.php?page=inventory');
-            }
-            
-            // Check if item has related pending (unreceived) orders
+            // Check if item has related pending orders
             $check_orders_sql = "SELECT COUNT(*) as count FROM order_items oi
                                  INNER JOIN orders o ON oi.order_id = o.id
                                  WHERE oi.item_id = :id AND o.status = 'pending'";
@@ -259,20 +248,43 @@ try {
                 redirect('index.php?page=inventory');
             }
             
-            // Delete the item
-            $sql = "DELETE FROM items WHERE id = :id";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([':id' => $item_id]);
+            // Begin transaction
+            $pdo->beginTransaction();
             
-            // Delete associated image file if exists
-            if ($item && !empty($item['image_path'])) {
-                $image_file_path = __DIR__ . '/' . $item['image_path'];
-                if (file_exists($image_file_path)) {
-                    unlink($image_file_path);
+            try {
+                // Delete related transactions
+                $delete_transactions_sql = "DELETE FROM transactions WHERE item_id = :id";
+                $delete_transactions_stmt = $pdo->prepare($delete_transactions_sql);
+                $delete_transactions_stmt->execute([':id' => $item_id]);
+                
+                // Delete related order items
+                $delete_order_items_sql = "DELETE FROM order_items WHERE item_id = :id";
+                $delete_order_items_stmt = $pdo->prepare($delete_order_items_sql);
+                $delete_order_items_stmt->execute([':id' => $item_id]);
+                
+                // Delete the item
+                $sql = "DELETE FROM items WHERE id = :id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([':id' => $item_id]);
+                
+                $pdo->commit();
+                
+                // Delete image file if exists
+                if ($item && !empty($item['image_path'])) {
+                    $image_file_path = __DIR__ . '/' . $item['image_path'];
+                    if (file_exists($image_file_path)) {
+                        unlink($image_file_path);
+                    }
                 }
+                
+                $_SESSION['success_message'] = 'Item deleted successfully!';
+            } catch (PDOException $e) {
+                // Rollback on error
+                $pdo->rollBack();
+                error_log('Error deleting item: ' . $e->getMessage());
+                $_SESSION['error_message'] = 'Failed to delete item: ' . $e->getMessage();
+                redirect('index.php?page=inventory');
             }
-            
-            $_SESSION['success_message'] = 'Item deleted successfully!';
             redirect('index.php?page=inventory');
             break;
             
