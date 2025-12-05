@@ -1,17 +1,167 @@
-@import url('inventory.css');
+/* Users page styles */
+
+body {
+  background: var(--background);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0px 0 0px;
+  background-color: var(--background);
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.filters form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Page Body */
+.page-body {
+  padding: 0 40px 20px 40px;
+  min-height: 0;
+}
+
+/* Filter Inputs */
+.filters input,
+.filters select,
+.filters .btn {
+  padding: 10px 12px;
+  font-size: var(--text-base);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  height: 42px;
+}
+
+.filters input {
+  flex: 3;
+  min-width: 0;
+}
+
+.filters select {
+  flex: 2;
+  min-width: 0;
+  cursor: pointer;
+  background-color: white;
+}
+
+.filters .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
 
 /* Add user button */
 .btn-add-user {
+  background-color: var(--primary);
   padding: 10px 18px;
   font-size: var(--text-xl);
   width: 200px;
+}
+
+.btn-add-user:hover {
+  background-color: #4a7685;
 }
 
 .btn-add-user i {
   font-size: var(--text-lg);
 }
 
-/* Additional status badges for user roles */
+/* Table Container */
+.inventory-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.inventory-table-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #f9fafb;
+}
+
+.inventory-table-header h3 {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Table Styles */
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-base);
+}
+
+.inventory-table thead {
+  position: sticky;
+  top: 0;
+  background: #f9fafb;
+  z-index: 10;
+}
+
+.inventory-table thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--foreground);
+  border-bottom: 2px solid var(--border);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inventory-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.inventory-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.inventory-table tbody td {
+  padding: 16px;
+  color: var(--foreground);
+  vertical-align: middle;
+}
+
+.item-name {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 .status-admin {
   background: #dbeafe;
   color: #1e40af;
@@ -22,11 +172,141 @@
   color: #4338ca;
 }
 
-/* Success button color for enable action */
+.status-in-stock {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-out-of-stock {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+/* Action Buttons */
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.action-btn i {
+  font-size: var(--text-base);
+}
+
+.view-btn {
+  color: #0284c7;
+}
+
+.view-btn:hover {
+  background: rgba(2, 132, 199, 0.1);
+}
+
+.edit-btn {
+  color: #f59e0b;
+}
+
+.edit-btn:hover {
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.delete-btn {
+  color: #dc2626;
+}
+
+.delete-btn:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.warning-btn {
+  color: #dc2626;
+}
+
+.warning-btn:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
 .success-btn {
   color: #16a34a;
 }
 
 .success-btn:hover {
   background: rgba(22, 163, 74, 0.1);
+}
+
+/* No Data Message */
+.no-data {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+}
+
+.no-data i {
+  font-size: 3rem;
+  color: var(--border);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.no-data p {
+  margin: 0;
+  font-size: var(--text-lg);
+  color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .btn-add-user {
+    width: 100%;
+  }
+
+  .page-body {
+    padding: 0 20px 15px 20px;
+  }
+
+  .filters {
+    padding: 15px 0 0 0;
+  }
+
+  .filters form {
+    flex-direction: column;
+  }
+
+  .filters input,
+  .filters select,
+  .filters .btn {
+    width: 100%;
+    flex: none;
+  }
+
+  .inventory-table {
+    font-size: var(--text-sm);
+  }
+
+  .inventory-table thead th,
+  .inventory-table tbody td {
+    padding: 12px 8px;
+  }
+
+  .actions-cell {
+    flex-wrap: wrap;
+  }
 }

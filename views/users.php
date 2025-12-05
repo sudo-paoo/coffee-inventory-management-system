@@ -1,6 +1,7 @@
 <?php
 $page_title = 'User Management';
 $page_css = 'users';
+$additional_css = ['inventory'];
 $active_page = 'users';
 $current_user = get_session_user();
 
