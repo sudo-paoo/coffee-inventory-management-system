@@ -844,13 +844,40 @@ textarea.form-input {
     width: 100%;
   }
 
+  /* Make Order Modal */
+  .order-items-container {
+    padding: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .order-items-table {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
+    min-width: 600px;
   }
   
   .order-items-table th,
   .order-items-table td {
-    padding: 6px;
+    padding: 8px 4px;
+  }
+
+  .order-items-table th {
+    font-size: var(--text-xs);
+  }
+
+  .order-items-table .form-select,
+  .order-items-table .form-input {
+    padding: 6px 8px;
+    font-size: var(--text-xs);
+  }
+
+  .btn-remove-item {
+    padding: 6px 8px;
+    font-size: var(--text-xs);
+  }
+
+  #makeOrderModal .modal-content {
+    max-width: 95%;
   }
 
   .order-items-list .order-item-row {
