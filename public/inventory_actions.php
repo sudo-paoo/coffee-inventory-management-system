@@ -246,14 +246,16 @@ try {
                 redirect('index.php?page=inventory');
             }
             
-            // Check if item has related order items
-            $check_orders_sql = "SELECT COUNT(*) as count FROM order_items WHERE item_id = :id";
+            // Check if item has related pending (unreceived) orders
+            $check_orders_sql = "SELECT COUNT(*) as count FROM order_items oi
+                                 INNER JOIN orders o ON oi.order_id = o.id
+                                 WHERE oi.item_id = :id AND o.status = 'pending'";
             $check_orders_stmt = $pdo->prepare($check_orders_sql);
             $check_orders_stmt->execute([':id' => $item_id]);
             $orders_result = $check_orders_stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($orders_result['count'] > 0) {
-                $_SESSION['error_message'] = 'Cannot delete item with existing orders. Please delete the related orders first.';
+                $_SESSION['error_message'] = 'Cannot delete item with pending orders. Please wait for orders to be received or cancel them first.';
                 redirect('index.php?page=inventory');
             }
             
@@ -264,8 +266,7 @@ try {
             
             // Delete associated image file if exists
             if ($item && !empty($item['image_path'])) {
-                $doc_root = $_SERVER['DOCUMENT_ROOT'];
-                $image_file_path = $doc_root . '/' . $item['image_path'];
+                $image_file_path = __DIR__ . '/' . $item['image_path'];
                 if (file_exists($image_file_path)) {
                     unlink($image_file_path);
                 }
