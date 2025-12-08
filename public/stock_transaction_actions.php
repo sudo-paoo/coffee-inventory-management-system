@@ -18,17 +18,6 @@ $pdo = Database::connect();
 // Get current user
 $current_user = get_session_user();
 
-// Response helper function
-function json_response($success, $message, $data = null) {
-    header('Content-Type: application/json');
-    echo json_encode([
-        'success' => $success,
-        'message' => $message,
-        'data' => $data
-    ]);
-    exit;
-}
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirect('index.php?page=inventory');
 }

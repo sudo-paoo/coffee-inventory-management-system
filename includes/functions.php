@@ -9,7 +9,6 @@
 function base_url($path = '') {
     $base = '/coffee-inventory-management-system/public';
     return $base . '/' . ltrim($path, '/');
-
 }
 
 function asset_url($path) {
@@ -45,7 +44,6 @@ function time_ago($datetime, $timezone = 'Asia/Manila') {
     
     // Create DateTime objects
     $now = new DateTime('now', new DateTimeZone($timezone));
-    // Database timestamp is already in the server's timezone, convert it
     $past = new DateTime($datetime);
     $past->setTimezone(new DateTimeZone($timezone));
 
@@ -62,7 +60,6 @@ function time_ago($datetime, $timezone = 'Asia/Manila') {
 // View rendering
 function render_view($view, $data = []) {
     extract($data);
-    // For InfinityFree: views folder is in same directory as index.php
     require __DIR__ . '/../views/' . $view;
 }
 ?>

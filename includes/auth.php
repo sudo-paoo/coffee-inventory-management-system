@@ -32,15 +32,6 @@ function require_auth() {
     }
 }
 
-function require_admin() {
-    require_auth();
-    if ($_SESSION['user_role'] !== 'admin') {
-        http_response_code(403);
-        render_view('403.php');
-        exit;
-    }
-}
-
 function require_role($allowed_roles) {
     require_auth();
     $user_role = $_SESSION['user_role'] ?? '';
@@ -54,12 +45,6 @@ function require_role($allowed_roles) {
 
 function has_role($role) {
     return isset($_SESSION['user_role']) && $_SESSION['user_role'] === $role;
-}
-
-function show_403() {
-    http_response_code(403);
-    render_view('403.php');
-    exit;
 }
 
 function show_404() {

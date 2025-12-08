@@ -52,120 +52,122 @@ ob_start();
                 </div>
                 <?php unset($_SESSION['error_message']); ?>
             <?php endif; ?>
-
+            
             <div class="settings-container">
-    <!-- Profile Information Section -->
-    <div class="settings-card">
-        <div class="settings-card-header">
-            <h3><i class="fa-solid fa-user"></i> Profile Information</h3>
-            <p>Update your account details</p>
-        </div>
-        <form id="profileForm" method="POST" action="<?php echo base_url('update_settings.php'); ?>">
-            <input type="hidden" name="action" value="update_profile">
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="first-name">First Name *</label>
-                    <input type="text" id="first-name" name="first_name" class="form-input" value="<?= escape($current_user['first_name']) ?>" required>
+                <!-- Profile Information Section -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <h3><i class="fa-solid fa-user"></i> Profile Information</h3>
+                        <p>Update your account details</p>
+                    </div>
+                    <form id="profileForm" method="POST" action="<?php echo base_url('update_settings.php'); ?>">
+                        <input type="hidden" name="action" value="update_profile">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="first_name" class="form-input" value="<?= escape($current_user['first_name']) ?>" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="last_name" class="form-input" value="<?= escape($current_user['last_name']) ?>" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" value="<?= escape($current_user['email']) ?>" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-number">Contact Number</label>
+                                <input type="text" id="contact-number" name="contact_number" class="form-input" value="<?= escape($current_user['contact_number'] ?? '') ?>" placeholder="09XXXXXXXXX">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="current-password-profile">Current Password (to confirm changes) *</label>
+                            <input type="password" id="current-password-profile" name="current_password" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 
-                <div class="form-group">
-                    <label for="last-name">Last Name *</label>
-                    <input type="text" id="last-name" name="last_name" class="form-input" value="<?= escape($current_user['last_name']) ?>" required>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" class="form-input" value="<?= escape($current_user['email']) ?>" required>
+                <!-- Change Password Section -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <h3><i class="fa-solid fa-lock"></i> Change Password</h3>
+                        <p>Update your account password</p>
+                    </div>
+                    <form id="passwordForm" method="POST" action="<?php echo base_url('update_settings.php'); ?>">
+                        <input type="hidden" name="action" value="change_password">
+                        
+                        <div class="form-group">
+                            <label for="current-password">Current Password *</label>
+                            <input type="password" id="current-password" name="current_password" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-password">New Password *</label>
+                            <input type="password" id="new-password" name="new_password" class="form-input" minlength="6" required>
+                            <small class="form-hint">Minimum 6 characters</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password *</label>
+                            <input type="password" id="confirm-password" name="confirm_password" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-key"></i> Change Password
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 
-                <div class="form-group">
-                    <label for="contact-number">Contact Number</label>
-                    <input type="text" id="contact-number" name="contact_number" class="form-input" value="<?= escape($current_user['contact_number'] ?? '') ?>" placeholder="09XXXXXXXXX">
+                <!-- Account Information -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <h3><i class="fa-solid fa-info-circle"></i> Account Information</h3>
+                        <p>View your account details</p>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Role:</span>
+                            <span class="info-value"><?= ucfirst(escape($current_user['role'])) ?></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Account Status:</span>
+                            <span class="info-value">
+                                <?php if ($current_user['is_active']): ?>
+                                    <span class="status-badge status-active">Active</span>
+                                <?php else: ?>
+                                    <span class="status-badge status-inactive">Inactive</span>
+                                <?php endif; ?>
+                            </span>
+                        </div>
+                        <?php if (!empty($current_user['created_at'])): ?>
+                        <div class="info-item">
+                            <span class="info-label">Member Since:</span>
+                            <span class="info-value"><?= date('F d, Y', strtotime($current_user['created_at'])) ?></span>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (!empty($current_user['updated_at'])): ?>
+                        <div class="info-item">
+                            <span class="info-label">Last Updated:</span>
+                            <span class="info-value"><?= date('F d, Y h:i A', strtotime($current_user['updated_at'])) ?></span>
+                        </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="current-password-profile">Current Password (to confirm changes) *</label>
-                <input type="password" id="current-password-profile" name="current_password" class="form-input" required>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa-solid fa-save"></i> Save Changes
-                </button>
-            </div>
-        </form>
-    </div>
-    
-    <!-- Change Password Section -->
-    <div class="settings-card">
-        <div class="settings-card-header">
-            <h3><i class="fa-solid fa-lock"></i> Change Password</h3>
-            <p>Update your account password</p>
-        </div>
-        <form id="passwordForm" method="POST" action="<?php echo base_url('update_settings.php'); ?>">
-            <input type="hidden" name="action" value="change_password">
-            
-            <div class="form-group">
-                <label for="current-password">Current Password *</label>
-                <input type="password" id="current-password" name="current_password" class="form-input" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="new-password">New Password *</label>
-                <input type="password" id="new-password" name="new_password" class="form-input" minlength="6" required>
-                <small class="form-hint">Minimum 6 characters</small>
-            </div>
-            
-            <div class="form-group">
-                <label for="confirm-password">Confirm New Password *</label>
-                <input type="password" id="confirm-password" name="confirm_password" class="form-input" required>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa-solid fa-key"></i> Change Password
-                </button>
-            </div>
-        </form>
-    </div>
-    
-    <!-- Account Information -->
-    <div class="settings-card">
-        <div class="settings-card-header">
-            <h3><i class="fa-solid fa-info-circle"></i> Account Information</h3>
-            <p>View your account details</p>
-        </div>
-        <div class="info-grid">
-            <div class="info-item">
-                <span class="info-label">Role:</span>
-                <span class="info-value"><?= ucfirst(escape($current_user['role'])) ?></span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Account Status:</span>
-                <span class="info-value">
-                    <?php if ($current_user['is_active']): ?>
-                        <span class="status-badge status-active">Active</span>
-                    <?php else: ?>
-                        <span class="status-badge status-inactive">Inactive</span>
-                    <?php endif; ?>
-                </span>
-            </div>
-            <?php if (!empty($current_user['created_at'])): ?>
-            <div class="info-item">
-                <span class="info-label">Member Since:</span>
-                <span class="info-value"><?= date('F d, Y', strtotime($current_user['created_at'])) ?></span>
-            </div>
-            <?php endif; ?>
-            <?php if (!empty($current_user['updated_at'])): ?>
-            <div class="info-item">
-                <span class="info-label">Last Updated:</span>
-                <span class="info-value"><?= date('F d, Y h:i A', strtotime($current_user['updated_at'])) ?></span>
-            </div>
-            <?php endif; ?>
             </div>
         </div>
     </div>
