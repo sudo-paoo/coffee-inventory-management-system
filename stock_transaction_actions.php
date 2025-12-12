@@ -5,12 +5,12 @@ date_default_timezone_set('Asia/Manila');
 session_start();
 
 // Require authentication
-require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 require_auth();
 
 // Load database and functions
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/functions.php';
 
 // Get database connection
 $pdo = Database::connect();
