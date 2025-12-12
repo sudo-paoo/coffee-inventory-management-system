@@ -19,10 +19,6 @@ function css_url($file) {
     return base_url('css/' . ltrim($file, '/'));
 }
 
-function js_url($file) {
-    return base_url('js/' . ltrim($file, '/'));
-}
-
 function redirect($page) {
     header('Location: ' . base_url($page));
     exit;

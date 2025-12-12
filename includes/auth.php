@@ -43,10 +43,6 @@ function require_role($allowed_roles) {
     }
 }
 
-function has_role($role) {
-    return isset($_SESSION['user_role']) && $_SESSION['user_role'] === $role;
-}
-
 function show_404() {
     http_response_code(404);
     render_view('404.php');
